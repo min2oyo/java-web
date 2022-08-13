@@ -1,4 +1,4 @@
-package mapping;
+package api.forward.redirect;
 
 import java.io.IOException;
 
@@ -9,35 +9,44 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/thirdMapping")
+@WebServlet("/firstRedirect")
 @SuppressWarnings("serial")
-public class Annotation extends HttpServlet {
+public class FirstServlet extends HttpServlet {
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 
-		System.out.println("ThirdServlet.init() 실행");
+		System.out.println("FirstServlet.init() 실행");
 
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		System.out.println("ThirdServlet.doGet() 실행");
+		doHandle(request, response);
 
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		System.out.println("ThirdServlet.doPost() 실행");
+		doHandle(request, response);
+
+	}
+
+	private void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		System.out.println("FirstServlet.handle() 실행");
+
+		// 응답
+		response.sendRedirect("secondRedirect?name=lee");
 
 	}
 
 	@Override
 	public void destroy() {
 
-		System.out.println("ThirdServlet.destroy() 실행");
+		System.out.println("FirstServlet.destroy() 실행");
 
 	}
 

@@ -35,7 +35,7 @@ public class Gugudan extends HttpServlet {
 
 	}
 
-	protected void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		System.out.println("Gugudan.doHandle() 실행");
 
