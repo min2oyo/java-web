@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>servlet</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+ 	
+ 	<servlet>	<!-- 브라우저에서 요청하는 매핑 이름에 대해 실제로 실행하는 서블릿 클래스를 설정하는 태그 -->
+		<servlet-name>a</servlet-name>	<!-- <servlet-mapping>태그의 <servlet-name> 태그와 값이 동일 -->
+		<servlet-class>mapping.XmlA</servlet-class>	<!-- 브라우저에서 요청하는 매핑 이름에 대해 실제로 기능을 수행하는 서블릿 클래스를 설정 -->
+	</servlet>
+	<servlet>
+		<servlet-name>b</servlet-name>
+		<servlet-class>mapping.XmlB</servlet-class>
+	</servlet>
+
+	<!-- 브라우저에서 요청하는 논리적인 서블릿을 설정 -->
+	<servlet-mapping>
+		<servlet-name>a</servlet-name>	<!-- 매핑 이름으로 요청 시 같은 <servlet> 태그 안의 <servlet-name> 태그와 연결됨 -->
+		<url-pattern>/first</url-pattern>	<!-- 브라우저에서 <servlet-class>를 요청하는 논리적인 서블릿 이름 -->
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>b</servlet-name>
+		<url-pattern>/second</url-pattern>
+	</servlet-mapping>
+	
+</web-app>
