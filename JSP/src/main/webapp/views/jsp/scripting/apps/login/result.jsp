@@ -22,14 +22,14 @@
 	if (userId == null || userId.length() == 0) {
 %>
 		아이디를 입력하세요<br>
-		<a href="login.html">로그인하기</a>
+		<a href="login.jsp">로그인 하기</a>
 <%		
 	} else if (userId.equals("admin")) {
 %>
 		<h1>관리자로 로그인했습니다</h1>
 		<form>
-			<input type="button" value="회원정보 삭제하기" />
-			<input type="button" value="회원정보 수정하기" />
+			<input type="button" value="회원정보 수정" />
+			<input type="button" value="회원정보 삭제" />
 		</form>
 <%		
 	} else {

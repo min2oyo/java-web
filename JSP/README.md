@@ -33,7 +33,7 @@
 #### 실습
 ##### 로그인
 - 주소
-	- http://localhost:8080/jsp/views/jsp/components/scripting/apps/login/login.jsp
+	- http://localhost:8080/jsp/views/jsp/scripting/apps/login/login.jsp
 - views.jsp.scripting.apps.login
 	- login.jsp
 	- result.jsp
