@@ -38,9 +38,10 @@
 	- login.jsp
 	- result.jsp
 	
-### 학점 변환
+### 학점 계산
+- 주소
+	- http://localhost:8080/jsp/views/jsp/scripting/apps/score/score.jsp?score=-1
 - score
-	- score.html
 	- score.jsp
 	
 ### 구구단
