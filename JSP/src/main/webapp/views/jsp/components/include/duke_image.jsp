@@ -1,0 +1,1 @@
+<img src="/jsp/views/images/duke.png" />

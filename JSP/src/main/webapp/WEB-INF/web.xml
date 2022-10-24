@@ -1,32 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
-
-	<!-- JSP.exception.error -->
-	<error-page>
-		<error-code>404</error-code>
-		<location>/views/JSP/exception/error/error_404.jsp</location>
-	</error-page>
-
-	<error-page>
-		<error-code>500</error-code>
-		<location>/views/JSP/exception/error/error_500.jsp</location>
-	</error-page>
-	<!-- /JSP.exception.error -->
-
-	<display-name>JSP</display-name>
-
-	<welcome-file-list>
-		<!-- JSP.welcome -->
-		<welcome-file>/views/JSP/welcome/main.jsp</welcome-file>
-		<welcome-file>/views/JSP/welcome/add.jsp</welcome-file>
-		<welcome-file>/views/JSP/welcome/main.html</welcome-file>
-		<!-- /JSP.welcome -->
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>index.htm</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
-		<welcome-file>default.htm</welcome-file>
-	</welcome-file-list>
-
+  <error-page>
+    <error-code>404</error-code>
+    <location>/views/JSP/exception/error/error_404.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/views/JSP/exception/error/error_500.jsp</location>
+  </error-page>
+  <display-name>jsp</display-name>
+  <welcome-file-list>
+    <welcome-file>/views/JSP/welcome/main.jsp</welcome-file>
+    <welcome-file>/views/JSP/welcome/add.jsp</welcome-file>
+    <welcome-file>/views/JSP/welcome/main.html</welcome-file>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
 </web-app>

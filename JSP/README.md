@@ -1,21 +1,24 @@
 # JSP
-## theory(이론)
-### JSP 변환
-- jsp
+## Start
+### 일반
+- views.jsp.Start
 	- hello.jsp
-		
+
+## JSP 구성요소
 ### 디렉티브 태그
-- directive
+#### 페이지 디렉티브 태그
+- views.jsp.components.directive
 	- hello.jsp
 		
-### 인클루드 디렉티브 태그
-- hello
+#### 인클루드 디렉티브 태그
+- views.jsp.components.include
 	- include.jsp
 	- duke_image.jsp
-- image
+- views.image
 	- duke.png
-	
-### 선언문, 스크립트릿, 표현식
+
+### 스크립트 요소
+#### 선언문, 스크립트릿, 표현식
 - hello
 	- hello3.jsp
 
