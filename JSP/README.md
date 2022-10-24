@@ -1,23 +1,23 @@
 # JSP
 ## Start
 ### 일반
-- 주소
-	- http://localhost:8080/jsp/views/jsp/hello.jsp
+- URL
+	- http://localhost:8080/jsp/views/hello.jsp
 - views.jsp
 	- hello.jsp
 
 ## JSP 구성요소
 ### 디렉티브 태그
 #### 페이지 디렉티브 태그
-- 주소
-	- http://localhost:8080/jsp/views/jsp/directive/page/hello.jsp
-- views.jsp.directive.page
+- URL
+	- http://localhost:8080/jsp/views/directive/page/hello.jsp
+- views.directive.page
 	- hello.jsp
 		
 #### 인클루드 디렉티브 태그
-- 주소
-	- http://localhost:8080/jsp/views/jsp/directive/include/include.jsp
-- views.jsp.directive.include
+- URL
+	- http://localhost:8080/jsp/views/directive/include/include.jsp
+- views.directive.include
 	- include.jsp
 	- duke_image.jsp
 - views.images
@@ -25,29 +25,29 @@
 
 ### 스크립트 요소
 #### 선언문, 스크립트릿, 표현식, 주석문
-- 주소
-	- http://localhost:8080/jsp/views/jsp/scripting/hello.jsp?age=22
-- views.jsp.scripting
+- URL
+	- http://localhost:8080/jsp/views/scripting/hello.jsp?age=22
+- views.scripting
 	- hello.jsp
 
 #### 실습
 ##### 로그인
-- 주소
-	- http://localhost:8080/jsp/views/jsp/scripting/apps/login/login.jsp
-- views.jsp.scripting.apps.login
+- URL
+	- http://localhost:8080/jsp/views/scripting/apps/login/login.jsp
+- views.scripting.apps.login
 	- login.jsp
 	- result.jsp
 	
 ##### 학점 계산
-- 주소
-	- http://localhost:8080/jsp/views/jsp/scripting/apps/score/score.jsp?score=-1
-- views.jsp.scripting.apps.score
+- URL
+	- http://localhost:8080/jsp/views/scripting/apps/score/score.jsp?score=-1
+- views.scripting.apps.score
 	- score.jsp
 	
 ##### 구구단
-- 주소
-	- http://localhost:8080/jsp/views/jsp/scripting/apps/multiplicationTable/multiplicationTable.jsp
-- views.jsp.scripting.apps.multiplicationTable
+- URL
+	- http://localhost:8080/jsp/views/scripting/apps/multiplicationTable/multiplicationTable.jsp
+- views.scripting.apps.multiplicationTable
 	- multiplicationTable.html
 	- gugudan.jsp
 - 작업
@@ -55,9 +55,9 @@
 	- CSS 정리
 	
 ##### 이미지 리스트
-- 주소
-	- http://localhost:8080/jsp/views/jsp/scripting/apps/imageList/imageList.jsp
-- views.jsp.scripting.apps.imageList
+- URL
+	- http://localhost:8080/jsp/views/scripting/apps/imageList/imageList.jsp
+- views.scripting.apps.imageList
 	- imageList.jsp
 - 작업
 	- 반응형 만들기
