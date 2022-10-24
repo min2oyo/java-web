@@ -1,31 +1,41 @@
 # JSP
 ## Start
 ### 일반
-- views.jsp.Start
+- 주소
+	- http://localhost:8080/jsp/views/jsp/hello.jsp
+- views.jsp
 	- hello.jsp
 
 ## JSP 구성요소
 ### 디렉티브 태그
 #### 페이지 디렉티브 태그
-- views.jsp.components.directive
+- 주소
+	- http://localhost:8080/jsp/views/jsp/directive/page/hello.jsp
+- views.jsp.directive.page
 	- hello.jsp
 		
 #### 인클루드 디렉티브 태그
-- views.jsp.components.include
+- 주소
+	- http://localhost:8080/jsp/views/jsp/directive/include/include.jsp
+- views.jsp.directive.include
 	- include.jsp
 	- duke_image.jsp
-- views.image
+- views.images
 	- duke.png
 
 ### 스크립트 요소
-#### 선언문, 스크립트릿, 표현식
-- hello
-	- hello3.jsp
+#### 선언문, 스크립트릿, 표현식, 주석문
+- 주소
+	- http://localhost:8080/jsp/views/jsp/scripting/hello.jsp?age=22
+- views.jsp.scripting
+	- hello.jsp
 
-## apps(프로그램)
-### 로그인
-- login
-	- login.html
+#### 실습
+##### 로그인
+- 주소
+	- http://localhost:8080/jsp/views/jsp/components/scripting/apps/login/login.jsp
+- views.jsp.scripting.apps.login
+	- login.jsp
 	- result.jsp
 	
 ### 학점 변환
