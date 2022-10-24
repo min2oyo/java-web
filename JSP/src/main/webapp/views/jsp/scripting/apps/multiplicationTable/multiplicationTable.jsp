@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,8 +12,8 @@
 
 <body>
 	<h1>구구단의 단수를 입력하세요</h1>
-	<form action="gugudan.jsp">
-		출력할 구구단: <input type="text" name="dan" /><br>
+	<form action="result.jsp">
+		출력할 구구단: <input type="text" name="number" /><br>
 		<input type="submit" value="출력하기">
 	</form>
 </body>

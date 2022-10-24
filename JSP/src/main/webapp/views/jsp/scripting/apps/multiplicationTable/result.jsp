@@ -2,7 +2,7 @@
 
 <%
 	request.setCharacterEncoding("utf-8");
-	int dan = Integer.parseInt(request.getParameter("dan"));
+	int number = Integer.parseInt(request.getParameter("number"));
 %>
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@
 <body>
 	<table border="1" width="800">
 		<tr align="center" bgcolor="#FFFF66">
-			<th colspan="2"><%= dan %>단 출력</th>		
+			<th colspan="2"><%= number %>단 출력</th>		
 		</tr>
 <%
 		for (int i = 1; i < 10; i++) {
@@ -32,8 +32,8 @@
 <%
 			}
 %>
-				<td width="400"><%= dan %> * <%= i %></td>
-				<td width="400"><%= dan * i %></td>
+				<td width="400"><%= number %> * <%= i %></td>
+				<td width="400"><%= number * i %></td>
 			</tr>
 <%
 		}
