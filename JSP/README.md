@@ -38,20 +38,29 @@
 	- login.jsp
 	- result.jsp
 	
-### 학점 계산
+##### 학점 계산
 - 주소
 	- http://localhost:8080/jsp/views/jsp/scripting/apps/score/score.jsp?score=-1
-- score
+- views.jsp.scripting.apps.score
 	- score.jsp
 	
-### 구구단
-- gugudan
-	- gugudan.html
+##### 구구단
+- 주소
+	- http://localhost:8080/jsp/views/jsp/scripting/apps/multiplicationTable/multiplicationTable.jsp
+- views.jsp.scripting.apps.multiplicationTable
+	- multiplicationTable.html
 	- gugudan.jsp
+- 작업
+	- 파일 하나로 합치기
+	- CSS 정리
 	
-### 이미지 리스트
-- imageList
+##### 이미지 리스트
+- 주소
+	- http://localhost:8080/jsp/views/jsp/scripting/apps/imageList/imageList.jsp
+- views.jsp.scripting.apps.imageList
 	- imageList.jsp
+- 작업
+	- 반응형 만들기
 
 ## builtInObject(내장 객체)
 ###	session (같은 브라우저만 공유)

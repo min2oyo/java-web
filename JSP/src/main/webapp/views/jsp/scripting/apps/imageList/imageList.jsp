@@ -66,7 +66,7 @@
 %>
 			<li>
 				<a href="#" style="margin-left: 50px">
-					<img src="/JSP/views/image/duke.png" width="90" height="90" alt="" />
+					<img src="/jsp/views/images/duke.png" width="90" height="90" alt="" />
 				</a>
 				<a href="#">
 					<strong>이미지 이름: 듀크<%= i %></strong>
