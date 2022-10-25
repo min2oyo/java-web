@@ -1,7 +1,6 @@
 package member;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -45,9 +44,9 @@ public class MemberDAO {
 
 			if ((searchName != null && searchName.length() != 0)) {	// 값이 존재하면 SQL문에 where절을 추가하여 해당 이름으로 조회
 
-				query += "where name = ?";
+				query += "where name like ?";
 				pstmt = con.prepareStatement(query);
-				pstmt.setString(1, searchName);	// 첫 번째 '?'에 전달된 이름을 지정
+				pstmt.setString(1, "%" + searchName + "%");	// 첫 번째 '?'에 전달된 이름을 지정
 
 			} else {	// 값이 없으면 모든 회원 정보 조회
 
@@ -55,22 +54,18 @@ public class MemberDAO {
 
 			}
 
-			System.out.println("prepareStatememt: " + query);
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
 
-				String id = rs.getString("id");
-				String pwd = rs.getString("pwd");
-				String name = rs.getString("name");
-				String email = rs.getString("email");
-				Date joinDate = rs.getDate("joinDate");
 				MemberVO vo = new MemberVO();
-				vo.setId(id);
-				vo.setPwd(pwd);
-				vo.setName(name);
-				vo.setEmail(email);
-				vo.setJoinDate(joinDate);
+
+				vo.setId(rs.getString("id"));
+				vo.setPwd(rs.getString("pwd"));
+				vo.setName(rs.getString("name"));
+				vo.setEmail(rs.getString("email"));
+				vo.setJoinDate(rs.getDate("joinDate"));
+
 				membersList.add(vo);
 
 			}

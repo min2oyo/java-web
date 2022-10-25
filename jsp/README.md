@@ -122,16 +122,17 @@
 
 ## 검색
 - URL
-	- 
+	- http://localhost:8080/jsp/views/search/member.jsp
 - java.member
 	- memberVO.java
 	- memberDAO.java
-- webapp.views.
+- webapp.views.search
 	- member.jsp
-	- search.jsp
-	- jsp.search
 - webapp.WEB-IFN.lib
 	- ojdbc11.jar
+	- tomcat-dbcp-7.0.30.jar
+- Servers.Tomcat v9.0 Server at localhost-config
+	- context.xml
 		
 # 액션 태그
 ## 개념

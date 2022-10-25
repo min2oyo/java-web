@@ -12,8 +12,6 @@ public class MemberVO {
 
 	public MemberVO() {
 
-		System.out.println("MemberVO() 실행");
-
 	}
 
 	public String getId() {
