@@ -146,6 +146,8 @@
 	- duke2.png
 	
 ## Forward Action Tag
+- URL
+	- http://localhost:8080/jsp/views/action-tag/forward/login.jsp
 - webapp.views.action-tag.forward
 	- login.jsp
 	- result.jsp
