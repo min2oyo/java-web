@@ -1,4 +1,4 @@
-package search;
+package member;
 
 import java.sql.Connection;
 import java.sql.Date;

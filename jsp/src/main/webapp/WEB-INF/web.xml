@@ -14,9 +14,7 @@
 	<!-- 시작 화면 -->
 	<display-name>jsp</display-name>
 	<welcome-file-list>
-		<welcome-file>/views/JSP/welcome/main.jsp</welcome-file>
-		<welcome-file>/views/JSP/welcome/add.jsp</welcome-file>
-		<welcome-file>/views/JSP/welcome/main.html</welcome-file>
+		<welcome-file>/views/welcome/main.jsp</welcome-file>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
 		<welcome-file>index.htm</welcome-file>

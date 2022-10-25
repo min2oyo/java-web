@@ -11,7 +11,7 @@
 </head>
 
 <body>
-	<img src="/JSP/views/image/duke.png" />
+	<img src="/jsp/views/images/duke.png" />
 	<h1>안녕하세요</h1>
 	<h1>쇼핑몰 중심 JSP 홈페이지입니다!</h1>
 </body>

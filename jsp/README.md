@@ -112,21 +112,26 @@
 - webapp.WEB-INF
 	- web.xml
 	
-## welcome(메인화면)
+## 시작 화면
 - URL
-	- 
-- 
+	- http://localhost:8080/jsp/
+- webapp.views.welcome
 	- main.jsp
 - webapp.WEB-INF
 	- web.xml
 
-## search(스크립트 요소)
-- search.jsp
-- member.jsp
-- jsp.search
+## 검색
+- URL
+	- 
+- java.member
 	- memberVO.java
 	- memberDAO.java
-	- /WEB-IFN/lib/ojdbc11.jar
+- webapp.views.
+	- member.jsp
+	- search.jsp
+	- jsp.search
+- webapp.WEB-IFN.lib
+	- ojdbc11.jar
 		
 # 액션 태그
 ## 개념
