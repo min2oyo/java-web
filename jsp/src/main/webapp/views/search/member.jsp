@@ -25,6 +25,9 @@
 		* {
 			text-align: center;
 		}
+		.left {
+			text-align: left;
+		}
 		form {
 			margin-bottom: 10px;
 		}
@@ -32,11 +35,11 @@
 </head>
 
 <body>
-	<h1>회원 정보 출력</h1>
+	<h1>회원 목록</h1>
 	<form action="member.jsp">
-		이름: <input type="text" name="searchName" />
+		이름: <input class="left" type="text" name="searchName" value="<%= searchName == null ? "" : searchName %>" />
 		<input type="submit" value="조회하기" />
-		<a href="/jsp/views/search/member.jsp"><input type="button" value="다시 검색" /></a>
+		<a href="/jsp/views/search/member.jsp"><input type="button" value="초기화" /></a>
 	</form>
 	<table border="1" width="800" align="center">
 		<tr align="center" bgcolor="#ffff66">

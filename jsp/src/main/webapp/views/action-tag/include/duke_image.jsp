@@ -6,5 +6,5 @@
 	String imgName = request.getParameter("imgName");
 %>
 
-	<h1>이름은 <%= name %>입니다.</h1><br><br>
-	<img src="/JSP/views/image/<%= imgName %>" /><br>
+	<h1>이름은 <%= name %>입니다.</h1>
+	<img src="/jsp/views/images/<%= imgName %>" />
