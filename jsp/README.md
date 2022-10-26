@@ -5,7 +5,6 @@
 	- hello.jsp
 
 # 디렉티브 태그
-
 ## 페이지 디렉티브 태그
 - URL
 	- http://localhost:8080/jsp/views/directive/page/hello.jsp
@@ -22,7 +21,6 @@
 	- duke.png
 
 # 스크립트 요소
-
 ## 선언문, 스크립트릿, 표현식, 주석문
 - URL
 	- http://localhost:8080/jsp/views/scripting/hello.jsp?age=22
@@ -62,7 +60,6 @@
 	- 반응형 만들기
 
 # 내장 객체(내장 변수, built in object(?))
-
 ## session
 - URL
 	- http://localhost:8080/jsp/session
@@ -94,7 +91,6 @@
 	- out2.jsp
 		
 # 예외 처리
-
 ## page
 - URL
 	- http://localhost:8080/jsp/views/exception/page/add.html
@@ -137,7 +133,6 @@
 	- context.xml
 		
 # 액션 태그
-
 ## 인클루드 액션 태그
 - URL
 	- http://localhost:8080/jsp/views/action-tag/include/include.jsp
@@ -191,12 +186,11 @@
 	- context.xml
 
 # 표현 언어
-
-## 자료형, 연산자
+## 연산자
 - URL
-	- http://localhost:8080/jsp/views/expression-language/elTest.jsp
-- webapp.views.expression-language
-	- elTest.jsp
+	- http://localhost:8080/jsp/views/expression-language/operator/operator.jsp
+- webapp.views.expression-language.operator
+	- operator.jsp
 
 ## 내장 객체
 - URL
@@ -206,6 +200,13 @@
 	- Address.jsva
 - webapp.views.expression-language.built-in-object
 	- sign-up.jsp
+	- forward.jsp
+	- member.jsp
+
+## 바인딩
+- URL
+	- http://localhost:8080/jsp/views/expression-language/binding/forward.jsp
+- webapp.views.expression-language.binding
 	- forward.jsp
 	- member.jsp
 

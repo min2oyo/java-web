@@ -2,6 +2,7 @@
 
 <%
 	request.setCharacterEncoding("utf-8");
+	
 	request.setAttribute("address", "서울시 강남구");
 %>
 
