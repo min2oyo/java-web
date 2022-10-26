@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,8 +11,9 @@
 </head>
 
 <body>
+
 	<form action="member.jsp" method="post">
-		<h1 style="text-align: center">회원 가입</h1>
+		<h1 style="text-align: center">회원가입</h1>
 		<table align="center">
 			<tr>
 				<td width="200"><p align="right">아이디</p></td>
@@ -34,6 +37,7 @@
 			</tr>
 		</table>
 	</form>
+	
 </body>
 
 </html>

@@ -32,6 +32,47 @@ public class MemberDAO {
 
 	}
 
+	// 회원 목록
+	public List<MemberVO> listMembers() {
+
+		List<MemberVO> list = new ArrayList<MemberVO>();
+
+		try {
+
+			con = dataFactory.getConnection();
+			String query = "select * from t_member order by joinDate desc ";	// 최근 가입일 순으로 회원 조회
+			pstmt = con.prepareStatement(query);
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+
+				MemberVO memberVO = new MemberVO();
+
+				memberVO.setId(rs.getString("id"));
+				memberVO.setPwd(rs.getString("pwd"));
+				memberVO.setName(rs.getString("name"));
+				memberVO.setEmail(rs.getString("email"));
+				memberVO.setJoinDate(rs.getDate("joinDate"));
+
+				list.add(memberVO);
+
+			}
+
+			rs.close();
+			pstmt.close();
+			con.close();
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
+
+		return list;
+
+	}
+
+	// 회원 조회
 	public List<MemberVO> listMembers(MemberVO memberVO) {
 
 		List<MemberVO> membersList = new ArrayList<MemberVO>();
@@ -81,6 +122,31 @@ public class MemberDAO {
 		}
 
 		return membersList;
+
+	}
+
+	// 회원가입
+	public void addMember(MemberVO memberVO) {
+
+		try {
+
+			con = dataFactory.getConnection();
+			String query = "insert into t_member (id, pwd, name, email) values (?, ?, ?, ?)";
+			pstmt = con.prepareStatement(query);
+
+			pstmt.setString(1, memberVO.getId());
+			pstmt.setString(2, memberVO.getPwd());
+			pstmt.setString(3, memberVO.getName());
+			pstmt.setString(4, memberVO.getEmail());
+
+			pstmt.executeUpdate();
+			pstmt.close();
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
 
 	}
 

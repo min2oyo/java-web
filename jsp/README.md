@@ -90,7 +90,7 @@
 	- out1.jsp
 	- out2.jsp
 		
-# 예외 처리(exception)
+# 예외 처리
 ## page
 - URL
 	- http://localhost:8080/jsp/views/exception/page/add.html
@@ -132,42 +132,58 @@
 - Servers.Tomcat v9.0 Server at localhost-config
 	- context.xml
 		
-# Action Tag
-## Include Action Tag
+# 액션 태그
+## 인클루드 액션 태그
 - URL
-	- http://localhost:8080/jsp/views/action-tag/include/include1.jsp
-	- http://localhost:8080/jsp/views/action-tag/include/include2.jsp
+	- http://localhost:8080/jsp/views/action-tag/include/include.jsp
 - webapp.views.action-tag.include
-	- include1.jsp
-	- include2.jsp
+	- include.jsp
 	- duke_image.jsp
 - webapp.views.images
 	- duke.png
 	- duke2.png
 	
-## Forward Action Tag
+## 포워드 액션 태그
 - URL
 	- http://localhost:8080/jsp/views/action-tag/forward/login.jsp
 - webapp.views.action-tag.forward
 	- login.jsp
 	- result.jsp
 
-## 실습: 회원정보 조회
-- javaBean (DB)
-	- webapp.views.actionTag.program.javaBean
-		- memberFrom.html
-		- member.jsp
-	- java.actionTag.bean
-		- MemberDTO.java
-		- MemberDAO.java
+## 자바 빈
+- URL
+	- http://localhost:8080/jsp/views/action-tag/java-bean/member.jsp
+- java.member
+	- MemberVO.java
+	- MemberDAO.java
+- webapp.views.action-tag.java-bean
+	- member.jsp
+	- memberFrom.jsp
+- webapp.WEB-IFN.lib
+	- ojdbc11.jar
+	- tomcat-dbcp-7.0.30.jar
+- Servers.Tomcat v9.0 Server at localhost-config
+	- context.xml
+- 작업
+	- 'memberForm.jsp' 최신 문법으로 수정
+	- 회원가입 할 때 '아이디 중복검사' 추가
+	- '회원 목록' 테이블 너비 조정
+	- 'MemberDAO.java' 회원 목록, 회원 조회 합쳐보기
 
-- useBean (DB)
-	- webapp.views.actionTag.program.useBean
-		- memberFrom.html
-		- member.jsp
-	- java.actionTag.bean
-		- MemberDTO.java
-		- MemberDAO.java
+## 유즈 빈
+- URL
+	- http://localhost:8080/jsp/views/action-tag/use-bean/member.jsp
+- java.member
+	- MemberVO.java
+	- MemberDAO.java
+- webapp.views.action-tag.use-bean
+	- member.jsp
+	- memberFrom.jsp
+- webapp.WEB-IFN.lib
+	- ojdbc11.jar
+	- tomcat-dbcp-7.0.30.jar
+- Servers.Tomcat v9.0 Server at localhost-config
+	- context.xml
 
 
 
@@ -175,24 +191,3 @@
 
 
 
-
-
-
-
-구성요소
-	• 디렉티브 태그(Directive Tag)
-		○ 페이지 디렉티브 태그(Page Directive Tag)
-		○ 인클루드 디렉티브 태그(Include Directive Tag)
-		○ 태그라이브 디렉티브 태그(Taglib Directive Tag)
-	• 스크립트 요소(Scripting Element)
-		○ 주석문
-		○ 스크립트릿(Scriptlet): 자바 코드 작성
-		○ 표현식: 변수값 출력
-		○ 선언식(선언문?): 변수, 메서드 선언
-	• 표현 언어(Expression Language)
-	• 내장 객체(내장 변수)
-	• 액션 태그(Action Tag)
-	• 커스텀 태그(Custom Tag)
-
-톰캣 컨테이너에서 JSP 변환과정
-(523)
