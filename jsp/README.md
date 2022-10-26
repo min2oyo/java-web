@@ -185,6 +185,14 @@
 - Servers.Tomcat v9.0 Server at localhost-config
 	- context.xml
 
+# 표현 언어
+- URL
+	- http://localhost:8080/jsp/views/expression-language/elTest.jsp
+- webapp.views.expression-language
+	- elTest.jsp
+
+
+
 
 
 

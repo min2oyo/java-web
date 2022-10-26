@@ -23,7 +23,7 @@
 
 <body>
 	<h2 align="center">회원 목록</h2>
-	<div align="right"><a href="memberForm.jsp"><button>회원 가입</button></a></div>
+	<div align="right"><a href="memberForm.jsp"><button>회원가입</button></a></div>
 	<table align="center" width="100%">
 		<tr align="center" bgcolor="#99ccff">
 			<td width="7%">아이디</td>
