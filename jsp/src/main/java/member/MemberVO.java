@@ -9,6 +9,7 @@ public class MemberVO {
 	private String name;
 	private String email;
 	private Date joinDate;
+	private Address address;
 
 	public MemberVO() {
 
@@ -80,6 +81,18 @@ public class MemberVO {
 	public void setJoinDate(Date joinDate) {
 
 		this.joinDate = joinDate;
+
+	}
+
+	public Address getAddress() {
+
+		return address;
+
+	}
+
+	public void setAddress(Address address) {
+
+		this.address = address;
 
 	}
 
