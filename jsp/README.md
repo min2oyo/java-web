@@ -276,11 +276,17 @@
 - webapp.views.jstl.formatting-tags.ascii-code
 	- message.jsp
 
-### 숫자
+### 숫자, 시간
 - URL
-	- 
+	- http://localhost:8080/jsp/views/jstl/formatting-tags/number/time.jsp
 - webapp.views.jstl.formatting-tags.number
 	- time.jsp
+
+### 문자열
+- URL
+	- http://localhost:8080/jsp/views/jstl/formatting-tags/string/fn.jsp
+- webapp.views.jstl.formatting-tags.string
+	- fn.jsp
 
 
 
