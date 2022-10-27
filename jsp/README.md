@@ -288,6 +288,25 @@
 - webapp.views.jstl.formatting-tags.string
 	- fn.jsp
 
+## 실습: 회원 관리
+- URL
+	- 
+- java.member
+	- MemberVO.java
+	- MemberDAO.java
+- webapp.views.jstl.member
+	- member_action.jsp
+	- sing-up.jsp
+	- member.jsp
+
+
+
+
+
+
+
+
+
 
 
 
