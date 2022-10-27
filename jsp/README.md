@@ -265,9 +265,22 @@
 - 작업
 	- 반응형 만들기
 
+## 포매팅 태그
+### 아스키 코드
+- URL
+	- http://localhost:8080/jsp/views/jstl/ascii-code/message.jsp
+- java.resource
+	- member_ko.properties
+	- member_en.properties
+	- member.properties
+- webapp.views.jstl.formatting-tags.ascii-code
+	- message.jsp
 
-
-
+### 숫자
+- URL
+	- 
+- webapp.views.jstl.formatting-tags.number
+	- time.jsp
 
 
 
