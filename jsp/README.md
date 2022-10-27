@@ -33,20 +33,20 @@
 ### 실습
 #### 로그인
 - URL
-	- http://localhost:8080/jsp/views/scripting/apps/login/login.jsp
+	- http://localhost:8080/jsp/views/scriptlet/scripting/apps/login/login.jsp
 - webapp.views.scripting.apps.login
 	- login.jsp
 	- result.jsp
 	
 #### 학점 계산
 - URL
-	- http://localhost:8080/jsp/views/scripting/apps/score/score.jsp?score=-1
+	- http://localhost:8080/jsp/views/scriptlet/scripting/apps/score/score.jsp?score=-1
 - webapp.views.scripting.apps.score
 	- score.jsp
 	
 #### 구구단
 - URL
-	- http://localhost:8080/jsp/views/scripting/apps/multiplication-table/multiplication-table.jsp
+	- http://localhost:8080/jsp/views/scriptlet/scripting/apps/multiplication-table/multiplication-table.jsp
 - webapp.views.scripting.apps.multiplication-table
 	- multiplication-table.jsp
 	- result.jsp
@@ -56,7 +56,7 @@
 	
 #### 이미지 리스트
 - URL
-	- http://localhost:8080/jsp/views/scripting/apps/image-list/image-list.jsp
+	- http://localhost:8080/jsp/views/scriptlet/scripting/apps/image-list/image-list.jsp
 - webapp.views.scripting.apps.image-list
 	- image-list.jsp
 - 작업
@@ -233,6 +233,37 @@
 	- escapeXml.jsp
 - 작업
 	- member.jsp에 login.jsp 링트 걸기
+
+### 실습
+#### 로그인
+- URL
+	- http://localhost:8080/jsp/views/jstl/core/apps/login/login.jsp
+- webapp.views.jstl.core.apps.login
+	- login.jsp
+	- result.jsp
+	
+#### 학점 계산
+- URL
+	- http://localhost:8080/jsp/views/jstl/core/apps/score/score.jsp
+- webapp.views.jstl.core.apps.score
+	- score.jsp
+	
+#### 구구단
+- URL
+	- http://localhost:8080/jsp/views/jstl/core/apps/multiplication-table/multiplication-table.jsp
+- webapp.views.jstl.core.apps.multiplication-table
+	- multiplication-table.jsp
+	- result.jsp
+- 작업
+	- 파일 하나로 합치기
+	- CSS 정리
+#### 이미지 리스트
+- URL
+	- http://localhost:8080/jsp/views/jstl/core/apps/image-list/image-list.jsp
+- webapp.views.jstl.core.apps.image-list
+	- image-list.jsp
+- 작업
+	- 반응형 만들기
 
 
 

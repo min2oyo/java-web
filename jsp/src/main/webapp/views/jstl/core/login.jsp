@@ -14,7 +14,7 @@
 </head>
 
 <body>
-	<form action="result.jsp">
+	<form action="#">
 		아이디: <input type="text" size="20" /><br>
 		비밀번호: <input type="password" size="20" /><br>
 		<input type="submit" value="로그인" /><input type="reset" value="다시 입력" /><br>
