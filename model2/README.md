@@ -1,0 +1,9 @@
+# member
+- URL
+	- http://localhost:8080/model2/member
+- java.member
+	- MemberController.java
+	- MemberDAO.java
+	- MemberVO.java
+- webapp.views.member
+	- listMembers.jsp
