@@ -290,7 +290,7 @@
 
 ## 실습: 회원 관리
 - URL
-	- 
+	- http://localhost:8080/jsp/views/jstl/member/sing-up.jsp
 - java.member
 	- MemberVO.java
 	- MemberDAO.java
@@ -299,10 +299,30 @@
 	- sing-up.jsp
 	- member.jsp
 
+# 파일
+## 업로드
+- URL
+	- http://localhost:8080/jsp/views/file/upload.jsp
+- java.file
+	- Upload.java
+- webapp.views.file
+	- upload.jsp
+- webapp.WEB-IFN.lib
+	- commons-fileupload-1.4.jar
+	- commons-io-2.11.0.jar
+- C:\file_repo
 
-
-
-
+## 다운로드
+- URL
+	- http://localhost:8080/jsp/views/file/download.jsp
+- java.file
+	- Download.java
+- webapp.views.file
+	- upload.jsp
+- webapp.WEB-IFN.lib
+	- commons-fileupload-1.4.jar
+	- commons-io-2.11.0.jar
+- C:\file_repo
 
 
 
