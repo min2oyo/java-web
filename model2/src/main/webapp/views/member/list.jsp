@@ -55,7 +55,7 @@
 			</c:when>
 		</c:choose>
 	</table>  
-	<p class="cls2"><a href="#">회원가입</a></p>
+	<p class="cls2"><a href="${contextPath}/model2/views/member/sign-up">회원가입</a></p>
 </body>
 
 </html>
