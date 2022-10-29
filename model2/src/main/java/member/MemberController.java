@@ -48,18 +48,23 @@ public class MemberController extends HttpServlet {
 
 		String nextPage = null;
 		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
+		response.setContentType("text/html; charset=utf-8");
 
-		String action = request.getPathInfo();	// URL에서 요청명을 가져옴
+		String action = request.getPathInfo();						// URL에서 요청명을 가져옴
 		System.out.println("action: " + action);
+		System.out.println();
 
-		if (action == null || action.equals("/list")) {	// 회원 목록
+		if (action == null || action.equals("/list")) {		// 회원 목록 페이지
 
 			List<MemberVO> membersList = memberDAO.listMembers();
 			request.setAttribute("membersList", membersList);
 			nextPage = "/views/member/list.jsp";
 
-		} else if (action.equals("/add")) {	// 회원 추가
+		} else if (action.equals("/sign-up")) {						// 회원가입 페이지
+
+			nextPage = "/views/member/sign-up.jsp";
+
+		} else if (action.equals("/create")) {						// 회원가입
 
 			String id = request.getParameter("id");
 			String pwd = request.getParameter("pwd");
@@ -67,13 +72,35 @@ public class MemberController extends HttpServlet {
 			String email = request.getParameter("email");
 			MemberVO memberVO = new MemberVO(id, pwd, name, email);
 			memberDAO.addMember(memberVO);
+			request.setAttribute("msg", "addMember");
 			nextPage = "/member/list";
 
-		} else if (action.equals("/sing-up")) {	// 회원가입 이동
+		} else if (action.equals("/modify")) {						// 회원 수정 페이지
 
-			nextPage = "/views/member/sing-up.jsp";
+			String id = request.getParameter("id");
+			MemberVO member = memberDAO.findMember(id);			// 회원 조회
+			request.setAttribute("member", member);					// 수정하기 전 회원 정보 전달
+			nextPage = "/views/member/modify.jsp";
 
-		} else {	// 회원 목록
+		} else if (action.equals("/update")) {						// 회원 수정
+
+			String id = request.getParameter("id");
+			String pwd = request.getParameter("pwd");
+			String name = request.getParameter("name");
+			String email = request.getParameter("email");
+			MemberVO memberVO = new MemberVO(id, pwd, name, email);
+			memberDAO.modMember(memberVO);
+			request.setAttribute("msg", "modified");
+			nextPage = "/member/list";
+
+		} else if (action.equals("/delete")) {						// 회원 삭제
+
+			String id = request.getParameter("id");
+			memberDAO.delMember(id);
+			request.setAttribute("msg", "deleted");
+			nextPage = "/member/list";
+
+		} else {																					// 회원 목록
 
 			List<MemberVO> membersList = memberDAO.listMembers();
 			request.setAttribute("membersList", membersList);
