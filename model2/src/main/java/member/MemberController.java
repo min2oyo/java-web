@@ -46,13 +46,11 @@ public class MemberController extends HttpServlet {
 
 	private void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String nextPage = null;
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 
+		String nextPage;
 		String action = request.getPathInfo();						// URL에서 요청명을 가져옴
-		System.out.println("action: " + action);
-		System.out.println();
 
 		if (action == null || action.equals("/list")) {		// 회원 목록 페이지
 
