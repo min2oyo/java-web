@@ -20,4 +20,11 @@ public class BoardService {
 
 	}
 
+	// 글 등록
+	public int addArticle(ArticleVO article) {
+
+		return boardDAO.insertNewArticle(article);
+
+	}
+
 }

@@ -53,7 +53,7 @@
 						<c:choose>
 							<c:when test='${article.level > 1}'>		<!-- level 값이 1보다 큰 경우 자식 글이므로 level 값만큼 부모 글 밑에 공백으로 들여쓰기 함 -->
 								<c:forEach begin="1" end="${article.level}" step="1">	<!-- 부모 글 기준으로 왼쪽 여백을 level 값만큼 채워 답글을 부모 글에 대해 들여씀 -->
-									<span style="padding-left: 20px"></span>
+									<span style="padding-left: 10px"></span>
 								</c:forEach>
 								<span style="font-size: 12px;">[답변]</span>
 								<a class='cls1' href="${contextPath}/board/article?no=${article.articleNO}">${article.title}</a>	<!-- 공백 다음에 자식 글 표시 -->
@@ -69,7 +69,7 @@
 		</c:when>
 	</c:choose>
 	</table>
-	<a class="cls1" href="#"><p class="cls2">글쓰기</p></a>
+	<a class="cls1" href="/model2/board/write"><p class="cls2">글쓰기</p></a>
 </body>
 
 </html>

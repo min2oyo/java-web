@@ -117,7 +117,7 @@ public class ArticleVO {
 
 		try {
 
-			this.imageFileName = URLEncoder.encode(imageFileName, "UTF-8");// �����̸��� Ư�����ڰ� ���� ��� ���ڵ��մϴ�.
+			this.imageFileName = URLEncoder.encode(imageFileName, "UTF-8");	// 파일이름에 특수문자가 있을 경우 인코딩합니다.
 
 		} catch (UnsupportedEncodingException e) {
 
