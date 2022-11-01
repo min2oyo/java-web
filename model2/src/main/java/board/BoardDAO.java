@@ -238,4 +238,57 @@ public class BoardDAO {
 
 	}
 
+	public void deleteArticle(int articleNO) {
+
+		try {
+
+			conn = dataFactory.getConnection();
+			String query = "delete from t_board where articleNO in (select articleNO from t_board start with articleNO = ? connect by prior articleNO = parentNO )";	// 자식 글까지 모두 삭제
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, articleNO);
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
+
+	}
+
+	public List<Integer> selectRemovedArticles(int articleNO) {
+
+		List<Integer> articleNOList = new ArrayList<Integer>();
+
+		try {
+
+			conn = dataFactory.getConnection();
+			String query = "select articleNO from t_board start with articleNO = ? connect by prior articleNO = parentNO";	// 삭제한 글들
+			System.out.println(query);
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, articleNO);
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+
+				articleNO = rs.getInt("articleNO");
+				articleNOList.add(articleNO);
+
+			}
+
+			pstmt.close();
+			conn.close();
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
+
+		return articleNOList;
+
+	}
+
 }

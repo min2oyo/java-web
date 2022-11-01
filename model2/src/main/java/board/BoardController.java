@@ -125,7 +125,6 @@ public class BoardController extends HttpServlet {
 			} else if (action.equals("/update")) {	// 글 수정
 
 				Map<String, String> articleMap = upload(request, response);
-				System.out.println("도달1");
 				int articleNO = Integer.parseInt(articleMap.get("articleNO"));
 				articleVO.setArticleNO(articleNO);
 				String title = articleMap.get("title");
@@ -151,10 +150,29 @@ public class BoardController extends HttpServlet {
 
 				}
 
-				System.out.println("도달2");
 				PrintWriter pw = response.getWriter();
 				pw.print("<script>alert(`글을 수정했습니다.`); location.href=`" + request.getContextPath() + "/board/article?no=" + articleNO + "`;</script>");	// 글 수정 후 location 객체의 href 속성을 이용해 글 상세 화면을 나타냄
-				System.out.println("도달3");
+				return;
+
+			} else if (action.equals("/delete")) {	// 글 삭제
+
+				int articleNO = Integer.parseInt(request.getParameter("articleNO"));
+				List<Integer> articleNOList = boardService.removeArticle(articleNO);	// articleNO 값에 대한 글을 삭제한 후 삭제된 부모 글과 자식 글의 articleNo 목록을 가져옴
+
+				for (int _articleNO : articleNOList) {	// 삭제된 글들의 이미지 저장 폴더들 삭제
+
+					File imgDir = new File(ARTICLE_IMAGE_REPO + "\\" + _articleNO);
+
+					if (imgDir.exists()) {
+
+						FileUtils.deleteDirectory(imgDir);
+
+					}
+
+				}
+
+				PrintWriter pw = response.getWriter();
+				pw.print("<script>alert(`글을 삭제했습니다.`); location.href=`" + request.getContextPath() + "/board/list`;</script>");
 				return;
 
 			} else {

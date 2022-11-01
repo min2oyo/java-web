@@ -123,16 +123,17 @@
 		}
 		
 		function fn_remove_article(url,articleNO) {
-			let form = document.createElement("form");
+			let form = document.createElement("form");	// 동적으로 form 태그 생성
 			form.setAttribute("method", "post");
 			form.setAttribute("action", url);
-			let articleNOInput = document.createElement("input");
+			
+			let articleNOInput = document.createElement("input");	// 동적으로 input 태그 생성한 후 name과 value를 articleNO와 글 번호로 설정
 			articleNOInput.setAttribute("type","hidden");
 			articleNOInput.setAttribute("name","articleNO");
 			articleNOInput.setAttribute("value", articleNO);
 			
-			form.appendChild(articleNOInput);
-			document.body.appendChild(form);
+			form.appendChild(articleNOInput);	// 동적으로 생성된 <input> 태그를 동적으로 생성한 <form> 태그에 append함
+			document.body.appendChild(form);	// <form> 태그를 <body> 태그에 추가(append)한 후 서버에 요청
 			form.submit();
 		}
 		
