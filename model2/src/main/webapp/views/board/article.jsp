@@ -23,7 +23,7 @@
 </head>
 
 <body>
-	<form name="frmArticle" method="post" enctype="multipart/form-data">
+	<form action="${contextPath}" name="frmArticle" method="post" enctype="multipart/form-data">
 		<table border="0" align="center">
 			<tr>
 				<td width="150" align="center" bgcolor="#FF9933">
@@ -31,7 +31,7 @@
 				</td>
 				<td>
 					<input type="text" value="${article.articleNO}" disabled />
-					<input type="hidden" name="articleNO" value="${article.articleNO}" />	<!-- 4 -->
+					<input type="hidden" name="articleNO" value="${article.articleNO}" />
 				</td>
 			</tr>
 			<tr>
@@ -60,12 +60,12 @@
 			</tr>
 			<c:if test="${not empty article.imageFileName && article.imageFileName!='null'}">	<!-- imageFileName 값이 있으면 이미지 표시 -->
 				<tr>
-					<td width="20%" align="center" bgcolor="#FF9933" rowspan="2">
+					<td width="150" align="center" bgcolor="#FF9933" rowspan="2">
 						이미지
 					</td>
 					<td>
-						<input type="hidden" name="originalFileName" value="${article.imageFileName }" />	<!-- 이미지 파일 이름, 이미지 수정에 대비해 미리 원래 이미지 파일 이름을 <hidden>태그에 저장 -->
-						<img src="${contextPath}/download?imageFileName=${article.imageFileName}&articleNO=${article.articleNO}" id="preview" /><br>	<!-- FileDownloadController 서블릿에 이미지 파일 이름과 글 번호를 전송해 이미지를 <img> 태그에 표시 -->
+						<input type="hidden" name="originalFileName" value="${article.imageFileName}" />	<!-- 이미지 파일 이름, 이미지 수정에 대비해 미리 원래 이미지 파일 이름을 <hidden>태그에 저장 -->
+						<img src="${contextPath}/download?articleNO=${article.articleNO}&imageFileName=${article.imageFileName}" id="preview" /><br>	<!-- FileDownloadController 서블릿에 이미지 파일 이름과 글 번호를 전송해 이미지를 <img> 태그에 표시 -->
 					</td>   
 				</tr>  
 				<tr>
@@ -75,7 +75,7 @@
 				</tr>
 			</c:if>
 			<tr>
-				<td width="20%" align="center" bgcolor="#FF9933">
+				<td width="150" align="center" bgcolor="#FF9933">
 					등록일자
 				</td>
 				<td>
@@ -97,7 +97,7 @@
 					<input type=button value="수정하기" onClick="fn_enable(this.form)">
 					<input type=button value="삭제하기" onClick="fn_remove_article('${contextPath}/board/delete', ${article.articleNO})">
 					<input type=button value="리스트로 돌아가기" onClick="backToList(this.form)">
-					<input type=button value="답글쓰기" onClick="fn_reply_form('${contextPath}/board/reply', ${article.articleNO})">
+					<input type=button value="답글쓰기" onClick="fn_reply_form('${contextPath}/board/reply', ${article.articleNO})">	<!-- 요청명과 글 번호 전달 -->
 				</td>
 			</tr>
 		</table>
@@ -137,6 +137,20 @@
 			form.submit();
 		}
 		
+		function fn_reply_form(url, parentNO) {
+			var form = document.createElement("form");
+			form.setAttribute("method", "post");
+			form.setAttribute("action", url);	// 전달된 요청명을 <form> 태그의 action 속성 값에 설정
+			var parentNOInput = document.createElement("input");
+			parentNOInput.setAttribute("type","hidden");	// 함수 호출 시 전달된 articleNO 값을 <input> 태그를 이용해 컨트롤러에 전달
+			parentNOInput.setAttribute("name","parentNO");
+			parentNOInput.setAttribute("value", parentNO);
+			
+			form.appendChild(parentNOInput);
+			document.body.appendChild(form);
+			form.submit();
+		}
+		 
 		function readURL(input) {
 			if (input.files && input.files[0]) {
 				let reader = new FileReader();

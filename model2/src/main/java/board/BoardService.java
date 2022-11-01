@@ -52,4 +52,11 @@ public class BoardService {
 
 	}
 
+	// 답글 등록
+	public int addReply(ArticleVO article) {
+
+		return boardDAO.insertNewArticle(article);
+
+	}
+
 }

@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -62,6 +63,7 @@ public class BoardController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 
+		HttpSession session;	// 답글에 대한 부모 글 번호를 저장하기 위해 세션 사용
 		String nextPage;
 		String action = request.getPathInfo();	// URL에서 요청명을 가져옴
 
@@ -173,6 +175,42 @@ public class BoardController extends HttpServlet {
 
 				PrintWriter pw = response.getWriter();
 				pw.print("<script>alert(`글을 삭제했습니다.`); location.href=`" + request.getContextPath() + "/board/list`;</script>");
+				return;
+
+			} else if (action.equals("/reply")) {	// 답글 쓰기 페이지
+
+				int parentNO = Integer.parseInt(request.getParameter("parentNO"));	// 답글창 요청 시 미리 부모 글 번호를 parentNO 속성으로 세션에 저장
+				session = request.getSession();	// 답글 전송 시 세션에 저장된 parentNO를 가져옴
+				session.setAttribute("parentNO", parentNO);
+				nextPage = "/views/board/reply.jsp";
+
+			} else if (action.equals("/addReply.do")) {
+
+				session = request.getSession();
+				int parentNO = (Integer) session.getAttribute("parentNO");
+				session.removeAttribute("parentNO");
+				Map<String, String> articleMap = upload(request, response);
+				String title = articleMap.get("title");
+				String content = articleMap.get("content");
+				String imageFileName = articleMap.get("imageFileName");
+				articleVO.setParentNO(parentNO);	// 답글의 부모 글 번호 설정
+				articleVO.setId("lee");	// 답글 작성자 ID
+				articleVO.setTitle(title);
+				articleVO.setContent(content);
+				articleVO.setImageFileName(imageFileName);
+				int articleNO = boardService.addReply(articleVO);	// 답글에 테이블 추가
+
+				if (imageFileName != null && imageFileName.length() != 0) {	// 답글에 첨부한 이미지를 temp 폴더에서 답글 번호 폴더로 이동
+
+					File srcFile = new File(ARTICLE_IMAGE_REPO + "\\" + "temp" + "\\" + imageFileName);
+					File destDir = new File(ARTICLE_IMAGE_REPO + "\\" + articleNO);
+					destDir.mkdirs();
+					FileUtils.moveFileToDirectory(srcFile, destDir, true);
+
+				}
+
+				PrintWriter pw = response.getWriter();
+				pw.print("<script>" + "  alert('답글을 추가했습니다.');" + " location.href='" + request.getContextPath() + "/board/article?no=" + articleNO + "';" + "</script>");
 				return;
 
 			} else {

@@ -16,7 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 public class FileDownloadController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private static String ARTICLE_IMAGE_REPO = "C:\\files\\board\\article_image";	// 상수로 선언
+	private static String ARTICLE_IMAGE_REPO = "C:\\board\\article_image";	// 상수로 선언
+//	private static String ARTICLE_IMAGE_REPO = "C:\\files\\board\\article_image";	// 상수로 선언
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
