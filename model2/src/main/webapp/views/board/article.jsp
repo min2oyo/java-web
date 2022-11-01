@@ -14,18 +14,24 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>글보기</title>
+	<style>
+		#tr_btn_modify{
+			display:none;
+		}
+	</style>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script> 
 </head>
 
 <body>
 	<form name="frmArticle" method="post" enctype="multipart/form-data">
-		<table  border="0" align="center" >
+		<table border="0" align="center">
 			<tr>
 				<td width="150" align="center" bgcolor="#FF9933">
 					글번호
 				</td>
 				<td>
 					<input type="text" value="${article.articleNO}" disabled />
-					<input type="hidden" name="articleNO" value="${article.articleNO}" />
+					<input type="hidden" name="articleNO" value="${article.articleNO}" />	<!-- 4 -->
 				</td>
 			</tr>
 			<tr>
@@ -52,19 +58,19 @@
 					<textarea rows="20" cols="60" name="content" id="i_content" disabled />${article.content}</textarea>
 				</td>  
 			</tr>
-			<c:if test="${not empty article.imageFileName && article.imageFileName!='null' }">	<!-- imageFileName 값이 있으면 이미지 표시 -->
+			<c:if test="${not empty article.imageFileName && article.imageFileName!='null'}">	<!-- imageFileName 값이 있으면 이미지 표시 -->
 				<tr>
-						<td width="20%" align="center" bgcolor="#FF9933" rowspan="2">
-					이미지
+					<td width="20%" align="center" bgcolor="#FF9933" rowspan="2">
+						이미지
 					</td>
 					<td>
-						<input type="hidden" name="originalFileName" value="${article.imageFileName }" />	<!-- 이미지 파일 이름 -->
+						<input type="hidden" name="originalFileName" value="${article.imageFileName }" />	<!-- 이미지 파일 이름, 이미지 수정에 대비해 미리 원래 이미지 파일 이름을 <hidden>태그에 저장 -->
 						<img src="${contextPath}/download?imageFileName=${article.imageFileName}&articleNO=${article.articleNO}" id="preview" /><br>	<!-- FileDownloadController 서블릿에 이미지 파일 이름과 글 번호를 전송해 이미지를 <img> 태그에 표시 -->
 					</td>   
 				</tr>  
 				<tr>
 					<td>
-						<input type="file" name="imageFileName" id="i_imageFileName" disabled onchange="readURL(this);" />
+						<input type="file" name="imageFileName" id="i_imageFileName" disabled onchange="readURL(this);" />	<!-- 수정된 이미지 파일 이름 전송 -->
 					</td>
 				</tr>
 			</c:if>
@@ -98,10 +104,47 @@
 	</form>
  
 	<script>
-		function backToList(obj){
+		function backToList(obj) {
 			obj.action="${contextPath}/board/list";
 			obj.submit();
 		}
+		
+		function fn_enable(obj) {	// 수정하기 클릭시 텍스트 박스 활성화
+			document.getElementById("i_title").disabled=false;	// 텍스트 박스의 id로 접근해 disabled 속성을 false로 설정
+			document.getElementById("i_content").disabled=false;
+			document.getElementById("i_imageFileName").disabled=false;
+			document.getElementById("tr_btn_modify").style.display="block";
+			document.getElementById("tr_btn").style.display="none";
+		}
+		
+		function fn_modify_article(obj) {	// 수정 반영하기 클릭 시 컨트롤러에 수정 데이터를 전송
+			obj.action="${contextPath}/board/update";
+			obj.submit();
+		}
+		
+		function fn_remove_article(url,articleNO) {
+			let form = document.createElement("form");
+			form.setAttribute("method", "post");
+			form.setAttribute("action", url);
+			let articleNOInput = document.createElement("input");
+			articleNOInput.setAttribute("type","hidden");
+			articleNOInput.setAttribute("name","articleNO");
+			articleNOInput.setAttribute("value", articleNO);
+			
+			form.appendChild(articleNOInput);
+			document.body.appendChild(form);
+			form.submit();
+		}
+		
+		function readURL(input) {
+			if (input.files && input.files[0]) {
+				let reader = new FileReader();
+				reader.onload = function (e) {
+				$('#preview').attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+			}
+		}  
 	</script>
 </body>
 

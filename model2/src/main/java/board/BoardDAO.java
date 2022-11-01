@@ -190,4 +190,52 @@ public class BoardDAO {
 
 	}
 
+	// 글 수정
+	public void updateArticle(ArticleVO article) {
+
+		int articleNO = article.getArticleNO();
+		String title = article.getTitle();
+		String content = article.getContent();
+		String imageFileName = article.getImageFileName();
+
+		try {
+
+			conn = dataFactory.getConnection();
+			String query = "update t_board set title = ?, content = ?";
+
+			if (imageFileName != null && imageFileName.length() != 0) {	// 수정된 이미지 파일이 있을 때만 imageFileName을 SQL문에 추가
+
+				query += ", imageFileName = ?";
+
+			}
+
+			query += " where articleNO = ?";
+
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+
+			if (imageFileName != null && imageFileName.length() != 0) {	// 이미지 파일을 수정하는 경우와 그렇지 않은 경우를 구분해서 설정
+
+				pstmt.setString(3, imageFileName);
+				pstmt.setInt(4, articleNO);
+
+			} else {
+
+				pstmt.setInt(3, articleNO);
+
+			}
+
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
+
+	}
+
 }

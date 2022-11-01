@@ -122,6 +122,41 @@ public class BoardController extends HttpServlet {
 				request.setAttribute("article", articleVO);
 				nextPage = "/views/board/article.jsp";
 
+			} else if (action.equals("/update")) {	// 글 수정
+
+				Map<String, String> articleMap = upload(request, response);
+				System.out.println("도달1");
+				int articleNO = Integer.parseInt(articleMap.get("articleNO"));
+				articleVO.setArticleNO(articleNO);
+				String title = articleMap.get("title");
+				String content = articleMap.get("content");
+				String imageFileName = articleMap.get("imageFileName");
+				articleVO.setParentNO(0);
+				articleVO.setId("hong");
+				articleVO.setTitle(title);
+				articleVO.setContent(content);
+				articleVO.setImageFileName(imageFileName);
+				boardService.modArticle(articleVO);	// 전송된 글 정보를 이용해 글 수정
+
+				if (imageFileName != null && imageFileName.length() != 0) {
+
+					String originalFileName = articleMap.get("originalFileName");	// 수정된 이미지 파일을 폴더로 이동
+					File srcFile = new File(ARTICLE_IMAGE_REPO + "\\" + "temp" + "\\" + imageFileName);
+					File destDir = new File(ARTICLE_IMAGE_REPO + "\\" + articleNO);
+					destDir.mkdirs();
+					FileUtils.moveFileToDirectory(srcFile, destDir, true);
+
+					File oldFile = new File(ARTICLE_IMAGE_REPO + "\\" + articleNO + "\\" + originalFileName);	// 전송된 originalImageFileName을 이용해 기존의 파일 삭제
+					oldFile.delete();
+
+				}
+
+				System.out.println("도달2");
+				PrintWriter pw = response.getWriter();
+				pw.print("<script>alert(`글을 수정했습니다.`); location.href=`" + request.getContextPath() + "/board/article?no=" + articleNO + "`;</script>");	// 글 수정 후 location 객체의 href 속성을 이용해 글 상세 화면을 나타냄
+				System.out.println("도달3");
+				return;
+
 			} else {
 
 				nextPage = "/views/board/list.jsp";
@@ -131,7 +166,9 @@ public class BoardController extends HttpServlet {
 			RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
 			dispatch.forward(request, response);
 
-		} catch (Exception e) {
+		} catch (
+
+		Exception e) {
 
 			e.printStackTrace();
 
@@ -169,7 +206,8 @@ public class BoardController extends HttpServlet {
 					System.out.println("파일명: " + fileItem.getName());
 					System.out.println("파일크기: " + fileItem.getSize() + "bytes");
 
-					// articleMap.put(fileItem.getFieldName(), fileItem.getName());
+//					articleMap.put(fileItem.getFieldName(), fileItem.getName());
+
 					if (fileItem.getSize() > 0) {	// 업로드한 파일이 존재하는 경우 업로드한 파일의 파일 이름으로 저장소에 업로드
 
 						int idx = fileItem.getName().lastIndexOf("\\");

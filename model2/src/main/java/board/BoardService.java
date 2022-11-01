@@ -36,4 +36,11 @@ public class BoardService {
 
 	}
 
+	// 글 수정
+	public void modArticle(ArticleVO article) {
+
+		boardDAO.updateArticle(article);
+
+	}
+
 }
