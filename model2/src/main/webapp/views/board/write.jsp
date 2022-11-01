@@ -43,7 +43,7 @@
 		</table>
 	</form>
 
-	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript">
 		function readURL(input) {	// 1
 			if (input.files && input.files[0]) {

@@ -27,4 +27,13 @@ public class BoardService {
 
 	}
 
+	// 글 보기
+	public ArticleVO viewArticle(int articleNO) {
+
+		ArticleVO article = null;
+		article = boardDAO.selectArticle(articleNO);
+		return article;
+
+	}
+
 }

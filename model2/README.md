@@ -18,6 +18,8 @@
 	- BoardService.java
 	- BoardDAO.java
 	- ArticleVO.java
-- webapp.views.member
+- webapp.views.board
 	- list.jsp
 	- write.jsp
+- java.common
+	- 

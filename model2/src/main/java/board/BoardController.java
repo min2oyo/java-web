@@ -115,6 +115,13 @@ public class BoardController extends HttpServlet {
 
 				return;
 
+			} else if (action.equals("/article")) {	// 글 보기
+
+				String articleNO = request.getParameter("no");	// 글 상세창을 요청할 경우 articleNO 값을 가져옴
+				articleVO = boardService.viewArticle(Integer.parseInt(articleNO));	// articleNO에 대한 글 정보를 조회하고 article 속성으로 바인딩 함
+				request.setAttribute("article", articleVO);
+				nextPage = "/views/board/article.jsp";
+
 			} else {
 
 				nextPage = "/views/board/list.jsp";
