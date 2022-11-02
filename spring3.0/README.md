@@ -1,0 +1,10 @@
+# SimpleUrlController
+- URL
+	- http://localhost:8080/spring3.0/views/index.jsp
+- java.controller
+	- SimpleUrlController.java
+- webapp.views
+	- index.jsp
+- webapp.WEB-INF
+	- web.xml
+	- action-servlet.xml
