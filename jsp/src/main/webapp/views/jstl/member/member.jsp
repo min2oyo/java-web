@@ -4,8 +4,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <% request.setCharacterEncoding("UTF-8"); %>
 
-<jsp:useBean id="memberVO" class="member.MemberVO" />
-<jsp:useBean id="memberDAO" class="member.MemberDAO" />
+<jsp:useBean id="memberVO" class="com.spring.member.MemberVO" />
+<jsp:useBean id="memberDAO" class="com.spring.member.MemberDAO" />
 
 <!DOCTYPE html>
 <html lang="en">

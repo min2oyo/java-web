@@ -4,10 +4,10 @@
 	request.setCharacterEncoding("utf-8");
 %>
 
-<jsp:useBean id="memberVO" class="member.MemberVO" />
+<jsp:useBean id="memberVO" class="com.spring.member.MemberVO" />
 <jsp:setProperty property="*" name="memberVO" />
 
-<jsp:useBean id="address" class="member.Address" />
+<jsp:useBean id="address" class="com.spring.member.Address" />
 <jsp:setProperty property="city" name="address" value="서울" />
 <jsp:setProperty property="zipcode" name="address" value="07654" />
 

@@ -1,0 +1,23 @@
+# 
+- URL
+	- http://localhost:8080/spring-jdbc/member/listMembers.do
+- com.spring.member.controller
+	- MemberController.java
+	- MemberControllerImpl.java
+- com.spring.member.service
+	- MemberService.java
+	- MemberServiceImpl.java
+- com.spring.member.dao
+	- MemberDAO.java
+	- MemberDAOImpl.java
+- com.spring.member.vo
+	- MemberVO.java
+- webapp.WEB-INF
+	- web.xml
+	- action-servlet.xml
+- webapp.WEB-INF.config
+	- action-dataSource.xml
+	- action-service.xml
+	- jdbc.properties
+- 작업
+	- 회원가입 링크 작업(?)

@@ -3,11 +3,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <%
-	request.setCharacterEncoding("utf-8");
+request.setCharacterEncoding("utf-8");
 %>
 
-<jsp:useBean id="memberVO" class="member.MemberVO" />
-<jsp:useBean id="memberDAO" class="member.MemberDAO" />
+<jsp:useBean id="memberVO" class="com.spring.member.MemberVO" />
+<jsp:useBean id="memberDAO" class="com.spring.member.MemberDAO" />
 
 <%
 	if (request.getParameter("id") != null) {	// 회원가입
