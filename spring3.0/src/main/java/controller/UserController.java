@@ -8,6 +8,7 @@ import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
 public class UserController extends MultiActionController {	// 설정 파일의 userMethodNameResolver 프로퍼티를 사용하려면 반드시 MultiactionController를 상속받아야 함
 
+	// 로그인
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		request.setCharacterEncoding("utf-8");
@@ -41,25 +42,23 @@ public class UserController extends MultiActionController {	// 설정 파일의 
 //		return mav;
 //
 //	}
-//
-//	public ModelAndView memberInfo(HttpServletRequest request, HttpServletResponse response) throws Exception {
-//
-//		request.setCharacterEncoding("utf-8");
-//		ModelAndView mav = new ModelAndView();
-//		String id = request.getParameter("id");
-//		String pwd = request.getParameter("pwd");
-//		String name = request.getParameter("name");
-//		String email = request.getParameter("email");
-//
-//		mav.addObject("id", id);
-//		mav.addObject("pwd", pwd);
-//		mav.addObject("name", name);
-//		mav.addObject("email", email);
-//		mav.setViewName("memberInfo");
-//		return mav;
-//
-//	}
-//
+
+	// 회원 정보
+	public ModelAndView memberInfo(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		request.setCharacterEncoding("utf-8");
+
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("id", request.getParameter("id"));	// 회원가입창에서 전송된 회원 정보를 addObject()을 이용해 ModelAndView 객체에 바인딩 함
+		mav.addObject("pwd", request.getParameter("pwd"));
+		mav.addObject("name", request.getParameter("name"));
+		mav.addObject("email", request.getParameter("email"));
+		mav.setViewName("memberInfo");	// memberInfo.jsp로 포워딩 함
+
+		return mav;
+
+	}
+
 //	private String getViewName(HttpServletRequest request) throws Exception {
 //
 //		String contextPath = request.getContextPath();

@@ -41,7 +41,7 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 		<property name="mappings">
 			<props>
 				<prop key="/views/login.do">login</prop>
-				<prop key="/views/memberInfo.do">memberInfo</prop>
+				<prop key="/views/memberInfo.do">memberInfo</prop>	<!-- URL 요청명과 메서드 이름을 동일하게 하여 회원 정보 요청 -->
 			</props>
 		</property>
 	</bean>
