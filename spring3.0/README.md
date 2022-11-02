@@ -23,7 +23,7 @@
 
 # MultiActionController (회원정보 표시)
 - URL
-	- 
+	- http://localhost:8080/spring3.0/views/memberForm.jsp
 - java.controller
 	- UserController.java
 - webapp.views
