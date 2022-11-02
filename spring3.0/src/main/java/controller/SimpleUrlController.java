@@ -11,7 +11,7 @@ public class SimpleUrlController implements Controller {	// 스프링에서 제�
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		return new ModelAndView("index.jsp");	// 작업을 마친 후 뷰 이름을 ModelAndView에 index.jsp로 설정하여 반환
+		return new ModelAndView("index");	// 작업을 마친 후 뷰 이름을 ModelAndView에 index.jsp로 설정하여 반환
 
 	}
 
