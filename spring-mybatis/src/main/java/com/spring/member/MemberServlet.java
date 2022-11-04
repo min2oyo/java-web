@@ -95,24 +95,25 @@ public class MemberServlet extends HttpServlet {
 
 			nextPage = "/member?action=listMembers";
 
-//		} else if (action.equals("updateMember")) {
-//
-//			String id = request.getParameter("id");
-//			String pwd = request.getParameter("pwd");
-//			String name = request.getParameter("name");
-//			String email = request.getParameter("email");
-//			memberVO.setId(id);
-//			memberVO.setPwd(pwd);
-//			memberVO.setName(name);
-//			memberVO.setEmail(email);
-//			memberDao.updateMember(memberVO);
-//			nextPage = "/mem4.do?action=listMembers";
-//
+		} else if (action.equals("updateMember")) {	// 회원 수정
+
+			String id = request.getParameter("id");
+			String pwd = request.getParameter("pwd");
+			String name = request.getParameter("name");
+			String email = request.getParameter("email");
+			memberVO.setId(id);
+			memberVO.setPwd(pwd);
+			memberVO.setName(name);
+			memberVO.setEmail(email);
+			memberDao.updateMember(memberVO);
+
+			nextPage = "/member?action=listMembers";
+
 //		} else if (action.equals("deleteMember")) {
 //
 //			String id = request.getParameter("id");
 //			memberDao.deleteMember(id);
-//			nextPage = "/mem4.do?action=listMembers";
+//			nextPage = "/member?action=listMembers";
 //
 //		} else if (action.equals("searchMember")) {
 //
@@ -122,7 +123,7 @@ public class MemberServlet extends HttpServlet {
 //			memberVO.setEmail(email);
 //			List<MemberVO> membersList = memberDao.searchMember(memberVO);
 //			request.setAttribute("membersList", membersList);
-//			nextPage = "test03/listMembers.jsp";
+//			nextPage = "/views/listMembers.jsp";
 //
 //		} else if (action.equals("foreachSelect")) {
 //
@@ -132,7 +133,7 @@ public class MemberServlet extends HttpServlet {
 //			nameList.add("�̼���");
 //			List<MemberVO> membersList = memberDao.foreachSelect(nameList);
 //			request.setAttribute("membersList", membersList);
-//			nextPage = "test03/listMembers.jsp";
+//			nextPage = "/views/listMembers.jsp";
 //
 //		} else if (action.equals("foreachInsert")) {
 //
@@ -141,14 +142,14 @@ public class MemberServlet extends HttpServlet {
 //			memList.add(new MemberVO("m2", "1234", "�̱浿", "m2@test.com"));
 //			memList.add(new MemberVO("m3", "1234", "��浿", "m3@test.com"));
 //			int result = memberDao.foreachInsert(memList);
-//			nextPage = "/mem4.do?action=listMembers";
+//			nextPage = "/member?action=listMembers";
 //
 //		} else if (action.equals("selectLike")) {
 //
 //			String name = "�浿";
 //			List<MemberVO> membersList = memberDao.selectLike(name);
 //			request.setAttribute("membersList", membersList);
-//			nextPage = "test03/listMembers.jsp";
+//			nextPage = "/views/listMembers.jsp";
 //
 		}
 

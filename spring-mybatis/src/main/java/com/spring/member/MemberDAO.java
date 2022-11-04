@@ -126,17 +126,19 @@ public class MemberDAO {
 		return result;
 
 	}
-//ㅊ
-//	public int updateMember(MemberVO memberVO) {
-//
-//		sqlMapper = getInstance();
-//		SqlSession session = sqlMapper.openSession();
-//		int result = session.update("mapper.member.updateMember", memberVO);
-//		session.commit();
-//		return result;
-//
-//	}
-//
+
+	// 회원 수정
+	public int updateMember(MemberVO memberVO) {
+
+		sqlMapper = getInstance();
+		SqlSession session = sqlMapper.openSession();
+		int result = session.update("mapper.member.updateMember", memberVO);
+		session.commit();
+
+		return result;
+
+	}
+
 //	public int deleteMember(String id) {
 //
 //		sqlMapper = getInstance();
