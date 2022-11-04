@@ -1,6 +1,7 @@
 package com.spring.member;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -119,26 +120,28 @@ public class MemberServlet extends HttpServlet {
 
 			nextPage = "/member?action=listMembers";
 
-//		} else if (action.equals("searchMember")) {
-//
-//			String name = request.getParameter("name");
-//			String email = request.getParameter("email");
-//			memberVO.setName(name);
-//			memberVO.setEmail(email);
-//			List<MemberVO> membersList = memberDao.searchMember(memberVO);
-//			request.setAttribute("membersList", membersList);
-//			nextPage = "/views/listMembers.jsp";
-//
-//		} else if (action.equals("foreachSelect")) {
-//
-//			List<String> nameList = new ArrayList<String>();
-//			nameList.add("ȫ�浿");
-//			nameList.add("������");
-//			nameList.add("�̼���");
-//			List<MemberVO> membersList = memberDao.foreachSelect(nameList);
-//			request.setAttribute("membersList", membersList);
-//			nextPage = "/views/listMembers.jsp";
-//
+		} else if (action.equals("searchMember")) {		// 회원 검색
+
+			String name = request.getParameter("name");
+			String email = request.getParameter("email");
+			memberVO.setName(name);
+			memberVO.setEmail(email);
+			List<MemberVO> membersList = memberDao.searchMember(memberVO);
+			request.setAttribute("membersList", membersList);
+
+			nextPage = "/views/listMembers.jsp";
+
+		} else if (action.equals("foreachSelect")) {	// 회원 정보 조회
+
+			List<String> nameList = new ArrayList<String>();
+			nameList.add("홍유진");
+			nameList.add("차예린");
+			nameList.add("이혜리");
+			List<MemberVO> membersList = memberDao.foreachSelect(nameList);
+			request.setAttribute("membersList", membersList);
+
+			nextPage = "/views/listMembers.jsp";
+
 //		} else if (action.equals("foreachInsert")) {
 //
 //			List<MemberVO> memList = new ArrayList<MemberVO>();

@@ -104,22 +104,22 @@
 		]]>
 	</delete>
 
-	<!-- 동적 SQL문 -->
-<!-- 	<select id="searchMember" parameterType="memberVO" resultMap="memResult"> -->
-<!-- 		<![CDATA[ -->
-<!-- 			select * -->
-<!-- 			from t_member -->
-<!-- 		]]> -->
-<!-- 		<where> -->
-<!-- 			<if test="name != '' and name != null"> -->
-<!-- 				name=#{name} -->
-<!-- 			</if> -->
-<!-- 			<if test="email != '' and email != null"> -->
-<!-- 				and email = #{email} -->
-<!-- 			</if> -->
-<!-- 		</where> -->
-<!-- 		order by joinDate desc -->
-<!-- 	</select> -->
+	<!-- 회원 검색 | if -->
+	<select id="searchMember" parameterType="memberVO" resultMap="memResult">
+		<![CDATA[
+			select *
+			from t_member
+		]]>	<!-- 공통 SQL문 -->
+		<where>	<!-- SQL문의 where절을 구성 -->
+			<if test="name != '' and name != null">	<!-- name 속성 값을 체크해 공백과 null이 아니면 'name = name 속성 값'을 공통 SQL문 뒤에 추가  -->
+				name = #{name}
+			</if>
+			<if test="email != '' and email != null">	<!-- email 속성 값을 체크해 공백과 null이 아니면 'email = email 속성 값'을 공통 SQL문 뒤에 추가 -->
+				and email = #{email}
+			</if>
+		</where>
+		order by joinDate desc
+	</select>
 
 	<!-- <sql id="a"> -->
 	<!-- <![CDATA[ -->
@@ -128,38 +128,41 @@
 	<!-- ]]> -->
 	<!-- </sql> -->
 
-<!-- 	<select id="searchMember" parameterType="memberVO" resultMap="memResult"> -->
+	<!-- 회원 검색 | choose -->
+	<select id="searchMember2" parameterType="memberVO" resultMap="memResult">
 <!-- 		<include refid="a" /> -->
-<!-- 		<![CDATA[ -->
-<!-- 			select * from t_member -->
-<!-- 		]]> -->
-<!-- 		<where> -->
-<!-- 			<choose> -->
-<!-- 				<when test="name != '' and name != null and email != '' and email != null"> -->
-<!-- 					name=#{name} and email=#{email} -->
-<!-- 				</when> -->
-<!-- 				<when test="name != '' and name != null"> -->
-<!-- 					name = #{name} -->
-<!-- 				</when> -->
-<!-- 				<when test="email !='' and email != null"> -->
-<!-- 					email = #{email} -->
-<!-- 				</when> -->
-<!-- 			</choose> -->
-<!-- 		</where> -->
-<!-- 		order by joinDate desc -->
-<!-- 	</select> -->
+		<![CDATA[
+			select *
+			from t_member
+		]]>
+		<where>
+			<choose>
+				<when test="name != '' and name != null and email != '' and email != null">
+					name = #{name} and email = #{email}
+				</when>
+				<when test="name != '' and name != null">
+					name = #{name}
+				</when>
+				<when test="email !='' and email != null">
+					email = #{email}
+				</when>
+			</choose>
+		</where>
+		order by joinDate desc
+	</select>
 
-<!-- 	<select id="foreachSelect" resultMap="memResult" parameterType="java.util.Map"> -->
+	<!-- 회원 정보 조회 -->
+	<select id="foreachSelect" resultMap="memResult" parameterType="java.util.Map">
 		<!-- <include refid="a" /> -->
-<!-- 		<![CDATA[ -->
-<!-- 			select * from t_member -->
-<!-- 		]]> -->
-<!-- 		where name in -->
-<!-- 		<foreach item="item" collection="list" open="(" separator="," close=")"> -->
-<!-- 			#{item} -->
-<!-- 		</foreach> -->
-<!-- 		order by joinDate desc -->
-<!-- 	</select> -->
+		<![CDATA[
+			select * from t_member
+		]]>
+		where name in
+		<foreach item="item" collection="list" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+		order by joinDate desc
+	</select>
 
 <!-- 	<insert id="foreachInsert" parameterType="java.util.Map"> -->
 <!-- 		<foreach item="item" collection="list" open="INSERT ALL" separator=" " close="SELECT * FROM DUAL"> -->
