@@ -95,7 +95,7 @@ public class MemberServlet extends HttpServlet {
 
 			nextPage = "/member?action=listMembers";
 
-		} else if (action.equals("updateMember")) {	// 회원 수정
+		} else if (action.equals("updateMember")) {		// 회원 수정
 
 			String id = request.getParameter("id");
 			String pwd = request.getParameter("pwd");
@@ -109,12 +109,16 @@ public class MemberServlet extends HttpServlet {
 
 			nextPage = "/member?action=listMembers";
 
-//		} else if (action.equals("deleteMember")) {
-//
-//			String id = request.getParameter("id");
-//			memberDao.deleteMember(id);
-//			nextPage = "/member?action=listMembers";
-//
+		} else if (action.equals("deleteMember")) {		// 회원 삭제
+
+			System.out.println("경과 1");
+			String id = request.getParameter("id");
+			System.out.println("경과 2");
+			memberDao.deleteMember(id);
+			System.out.println("경과 3");
+
+			nextPage = "/member?action=listMembers";
+
 //		} else if (action.equals("searchMember")) {
 //
 //			String name = request.getParameter("name");

@@ -139,17 +139,19 @@ public class MemberDAO {
 
 	}
 
-//	public int deleteMember(String id) {
-//
-//		sqlMapper = getInstance();
-//		SqlSession session = sqlMapper.openSession();
-//		int result = 0;
-//		result = session.delete("mapper.member.deleteMember", id);
-//		session.commit();
-//		return result;
-//
-//	}
-//
+	// 회원삭제
+	public int deleteMember(String id) {
+
+		sqlMapper = getInstance();
+		SqlSession session = sqlMapper.openSession();
+		int result = 0;
+		result = session.delete("mapper.member.deleteMember", id);
+		session.commit();
+
+		return result;
+
+	}
+
 //	public List<MemberVO> searchMember(MemberVO memberVO) {
 //
 //		sqlMapper = getInstance();

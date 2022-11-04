@@ -24,6 +24,7 @@
 			<th>이름</th>
 			<th>이메일</th>
 			<th>가입일</th>
+			<th>삭제</th>
 		</tr>
 
 		<c:forEach var="member" items="${membersList}">
@@ -33,11 +34,13 @@
 				<td>${member.name}</td>
 				<td>${member.email}</td>
 				<td>${member.joinDate}</td>
+				<td><a href="${contextPath}/member?action=deleteMember&id=${member.id }">삭제하기</a></td>
+				
 			</tr>
 		</c:forEach>
 
 	</table>
-	<a href="${contextPath}/member/memberForm.do"><h1 style="text-align: center">회원가입</h1></a>
+	<a href="${contextPath}/member/memberForm"><h1 style="text-align: center">회원가입</h1></a>
 </body>
 
 </html>
