@@ -20,7 +20,6 @@
 		]]>
 	</select>
 
-
 	<!-- 회원 목록 | HashMap -->
 	<resultMap id="memResult2" type="java.util.HashMap">
 		<result property="id" column="id" />
@@ -56,19 +55,21 @@
 		]]>
 	</select>
 
-<!-- 	<select id="selectMemberById" resultType="memberVO" parameterType="String"> -->
-<!-- 		<![CDATA[ -->
-<!-- 			select * from t_member -->
-<!-- 			where id=#{id} -->
-<!-- 		]]> -->
-<!-- 	</select> -->
+	<!-- 아이디 검색 -->
+	<select id="selectMemberById" resultType="memberVO" parameterType="String">
+		<![CDATA[
+			select * from t_member
+			where id = #{id}
+		]]>
+	</select>
 
-<!-- 	<select id="selectMemberByPwd" resultMap="memResult" parameterType="int"> -->
-<!-- 		<![CDATA[ -->
-<!-- 			select * from t_member -->
-<!-- 			where pwd = #{pwd}			 -->
-<!-- 		]]> -->
-<!-- 	</select> -->
+	<!-- 비밀번호 검색 -->
+	<select id="selectMemberByPwd" resultMap="memResult" parameterType="int">
+		<![CDATA[
+			select * from t_member
+			where pwd = #{pwd}
+		]]>
+	</select>
 
 <!-- 	<insert id="insertMember" parameterType="memberVO"> -->
 <!-- 		<![CDATA[ -->

@@ -34,22 +34,47 @@ public class MemberServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 
-		MemberDAO dao = new MemberDAO();
+		MemberVO memberVO = new MemberVO();
+		MemberDAO memberDao = new MemberDAO();
+		String action = request.getParameter("action");
+		String nextPage = null;
 
-		// 회원 목록
-		List<MemberVO> membersList = dao.selectAllMemberList();	// 택1: MemberVO
+		// 경로
+		if (action == null || action.equals("listMembers")) {	// 회원 목록
+
+			List<MemberVO> membersList = memberDao.selectAllMemberList();	// 택1: MemberVO
 //		List<HashMap<String, String>> membersList = dao.selectAllMemberList2();	// 택2: HashMap
-		request.setAttribute("membersList", membersList);
+			request.setAttribute("membersList", membersList);
+
+			nextPage = "/views/listMembers.jsp";
+
+		} else if (action.equals("selectMemberById")) {				// 아이디 검색
+
+			String id = request.getParameter("value");
+			memberVO = memberDao.selectMemberById(id);
+			request.setAttribute("member", memberVO);
+
+			nextPage = "/views/memberInfo.jsp";
+
+		} else if (action.equals("selectMemberByPwd")) {			// 비밀번호 검색
+
+			int pwd = Integer.parseInt(request.getParameter("value"));
+			List<MemberVO> membersList = memberDao.selectMemberByPwd(pwd);
+			request.setAttribute("membersList", membersList);
+
+			nextPage = "/views/listMembers.jsp";
+
+		}
 
 		// 이름, 비밀번호 조회
-		String name = dao.selectName();
-		int pwd = dao.selectPwd();
+		String name = memberDao.selectName();
+		int pwd = memberDao.selectPwd();
 
 		System.out.println("이름: " + name);
 		System.out.println("비밀번호: " + pwd);
 
 		// 이동
-		RequestDispatcher dispatch = request.getRequestDispatcher("/views/listMembers.jsp");
+		RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
 		dispatch.forward(request, response);
 
 	}

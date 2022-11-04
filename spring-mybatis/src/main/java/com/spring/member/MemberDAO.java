@@ -78,4 +78,26 @@ public class MemberDAO {
 
 	}
 
+	// 아이디 검색
+	public MemberVO selectMemberById(String id) {
+
+		sqlMapper = getInstance();
+		SqlSession session = sqlMapper.openSession();
+		MemberVO memberVO = session.selectOne("mapper.member.selectMemberById", id);
+
+		return memberVO;
+
+	}
+
+	// 비밀번호 검색
+	public List<MemberVO> selectMemberByPwd(int pwd) {
+
+		sqlMapper = getInstance();
+		SqlSession session = sqlMapper.openSession();
+		List<MemberVO> membersList = session.selectList("mapper.member.selectMemberByPwd", pwd);
+
+		return membersList;
+
+	}
+
 }

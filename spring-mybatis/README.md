@@ -1,6 +1,7 @@
 # 회원 관리
 - URL
-	- http://localhost:8080/spring-mybatis/member
+	- http://localhost:8080/spring-mybatis/member	// 회원 목록
+	- http://localhost:8080/spring-mybatis/views/search.jsp	// 회원 검색
 - java.com.spring.member
 	- MemberServlet.java
 	- MemberDAO.java
@@ -9,3 +10,5 @@
 	- member.xml
 - java.com.spring.mybatis
 	- SqlMapConfig.xml
+- 작업
+	- jsp 파일들 통합 시켜보기
