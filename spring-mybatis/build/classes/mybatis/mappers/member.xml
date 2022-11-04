@@ -121,20 +121,17 @@
 		order by joinDate desc
 	</select>
 
-	<!-- <sql id="a"> -->
-	<!-- <![CDATA[ -->
-	<!-- select * -->
-	<!-- from t_member -->
-	<!-- ]]> -->
-	<!-- </sql> -->
-
-	<!-- 회원 검색 | choose -->
-	<select id="searchMember2" parameterType="memberVO" resultMap="memResult">
-<!-- 		<include refid="a" /> -->
+	<!-- 공통 -->
+	<sql id="a">	<!-- <sql>을 이용해 공통 SQL문의 refid를 a로 지정 -->
 		<![CDATA[
 			select *
 			from t_member
 		]]>
+	</sql>
+
+	<!-- 회원 검색 | choose -->
+	<select id="searchMember2" parameterType="memberVO" resultMap="memResult">
+		<include refid="a" />	<!-- <include>를 이용해 공통 SQL문 재사용 -->
 		<where>
 			<choose>
 				<when test="name != '' and name != null and email != '' and email != null">
@@ -164,38 +161,31 @@
 		order by joinDate desc
 	</select>
 
-<!-- 	<insert id="foreachInsert" parameterType="java.util.Map"> -->
-<!-- 		<foreach item="item" collection="list" open="INSERT ALL" separator=" " close="SELECT * FROM DUAL"> -->
-<!-- 			INTO t_member ( -->
-<!-- 				id, -->
-<!-- 				pwd, -->
-<!-- 				name, -->
-<!-- 				email -->
-<!-- 			) -->
-<!-- 			VALUES ( -->
-<!-- 				#{item.id}, -->
-<!-- 				#{item.pwd}, -->
-<!-- 				#{item.name}, -->
-<!-- 				#{item.email} -->
-<!-- 			) -->
-<!-- 		</foreach> -->
-<!-- 	</insert> -->
+	<!-- 회원 다즁 추가 -->
+	<insert id="foreachInsert" parameterType="java.util.Map">
+		<foreach item="item" collection="list" open="INSERT ALL" separator=" " close="SELECT * FROM DUAL">	<!-- <fooeach>로 반복 작업을 할 때는 처음에 INSERT * FROM DUAL을 마지막에 추가함 -->
+			INTO t_member (
+				id,
+				pwd,
+				name,
+				email
+			)
+			VALUES (
+				#{item.id},
+				#{item.pwd},
+				#{item.name},
+				#{item.email}
+			)
+		</foreach>
+	</insert>
 
-<!-- 	<select id="selectLike" resultMap="memResult" parameterType="String"> -->
-<!-- 		<![CDATA[ -->
-<!-- 			select * -->
-<!-- 			from t_member -->
-<!-- 			where name like '%'#{name}'%' -->
-<!-- 		]]> -->
-<!-- 	</select> -->
-	
 	<!-- like 검색 -->
-<!-- 	<select id="selectLike" resultMap="memResult" parameterType="String"> -->
-<!-- 		<![CDATA[ -->
-<!-- 			select * -->
-<!-- 			from t_member -->
-<!-- 			where name like '%' || #{name} || '%'		 -->
-<!-- 		]]> -->
-<!-- 	</select> -->
+	<select id="selectLike" resultMap="memResult" parameterType="String">
+		<![CDATA[
+			select *
+			from t_member
+			where name like '%' || #{name} || '%'		
+		]]>
+	</select>
 	
 </mapper>

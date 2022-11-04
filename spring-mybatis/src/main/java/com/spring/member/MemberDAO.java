@@ -184,42 +184,28 @@ public class MemberDAO {
 		return list;
 
 	}
-//
-//	public int foreachInsert(List memList) {
-//
-//		sqlMapper = getInstance();
-//		SqlSession session = sqlMapper.openSession();
-//		int result = session.insert("mapper.member.foreachInsert", memList);
-//		session.commit();
-//		return result;
-//
-//	}
-//
-//	public List<MemberVO> selectLike(String name) {
-//
-//		sqlMapper = getInstance();
-//		SqlSession session = sqlMapper.openSession();
-//		List list = session.selectList("mapper.member.selectLike", name);
-//		return list;
-//
-//	}
-//
-//	public String selectName() {
-//
-//		sqlMapper = getInstance();
-//		SqlSession session = sqlMapper.openSession();
-//		String name = session.selectOne("mapper.member.selectName");
-//		return name;
-//
-//	}
-//
-//	public int selectPwd() {
-//
-//		sqlMapper = getInstance();
-//		SqlSession session = sqlMapper.openSession();
-//		int pwd = session.selectOne("mapper.member.selectPwd");
-//		return pwd;
-//
-//	}
+
+	// 회원 다중 추가
+	public int foreachInsert(List<?> memList) {
+
+		sqlMapper = getInstance();
+		SqlSession session = sqlMapper.openSession();
+		int result = session.insert("mapper.member.foreachInsert", memList);
+		session.commit();	// 반드시 commit() 호출
+
+		return result;
+
+	}
+
+	// like 검색
+	public List<MemberVO> selectLike(String name) {
+
+		sqlMapper = getInstance();
+		SqlSession session = sqlMapper.openSession();
+		List<MemberVO> list = session.selectList("mapper.member.selectLike", name);
+
+		return list;
+
+	}
 
 }

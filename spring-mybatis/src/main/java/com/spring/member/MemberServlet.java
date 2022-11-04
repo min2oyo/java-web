@@ -43,15 +43,21 @@ public class MemberServlet extends HttpServlet {
 		String nextPage = null;
 
 		// 경로
-		if (action == null || action.equals("listMembers")) {	// 회원 목록
+		if (action == null || action.equals("listMembers")) {					// 회원 목록 | MemberVO
 
-			List<MemberVO> membersList = memberDao.selectAllMemberList();	// 택1: MemberVO
-//		List<HashMap<String, String>> membersList = dao.selectAllMemberList2();	// 택2: HashMap
+			List<MemberVO> membersList = memberDao.selectAllMemberList();
 			request.setAttribute("membersList", membersList);
 
 			nextPage = "/views/listMembers.jsp";
 
-		} else if (action.equals("selectMemberById")) {				// 아이디 검색
+		} else if (action == null || action.equals("listMembers2")) {	// 회원 목록 | HashMap
+
+			List<HashMap<String, String>> membersList = memberDao.selectAllMemberList2();
+			request.setAttribute("membersList", membersList);
+
+			nextPage = "/views/listMembers.jsp";
+
+		} else if (action.equals("selectMemberById")) {								// 아이디 검색
 
 			String id = request.getParameter("value");
 			memberVO = memberDao.selectMemberById(id);
@@ -59,7 +65,7 @@ public class MemberServlet extends HttpServlet {
 
 			nextPage = "/views/memberInfo.jsp";
 
-		} else if (action.equals("selectMemberByPwd")) {			// 비밀번호 검색
+		} else if (action.equals("selectMemberByPwd")) {							// 비밀번호 검색
 
 			int pwd = Integer.parseInt(request.getParameter("value"));
 			List<MemberVO> membersList = memberDao.selectMemberByPwd(pwd);
@@ -67,7 +73,7 @@ public class MemberServlet extends HttpServlet {
 
 			nextPage = "/views/listMembers.jsp";
 
-		} else if (action.equals("insertMember")) {						// 회원 추가 | memberVO
+		} else if (action.equals("insertMember")) {										// 회원 추가 | memberVO
 
 			String id = request.getParameter("id");
 			String pwd = request.getParameter("pwd");
@@ -81,7 +87,7 @@ public class MemberServlet extends HttpServlet {
 
 			nextPage = "/member?action=listMembers";
 
-		} else if (action.equals("insertMember2")) {	// 회원 추가 | HashMap
+		} else if (action.equals("insertMember2")) {									// 회원 추가 | HashMap
 
 			String id = request.getParameter("id");
 			String pwd = request.getParameter("pwd");
@@ -96,7 +102,7 @@ public class MemberServlet extends HttpServlet {
 
 			nextPage = "/member?action=listMembers";
 
-		} else if (action.equals("updateMember")) {		// 회원 수정
+		} else if (action.equals("updateMember")) {										// 회원 수정
 
 			String id = request.getParameter("id");
 			String pwd = request.getParameter("pwd");
@@ -110,7 +116,7 @@ public class MemberServlet extends HttpServlet {
 
 			nextPage = "/member?action=listMembers";
 
-		} else if (action.equals("deleteMember")) {		// 회원 삭제
+		} else if (action.equals("deleteMember")) {										// 회원 삭제
 
 			System.out.println("경과 1");
 			String id = request.getParameter("id");
@@ -120,7 +126,7 @@ public class MemberServlet extends HttpServlet {
 
 			nextPage = "/member?action=listMembers";
 
-		} else if (action.equals("searchMember")) {		// 회원 검색
+		} else if (action.equals("searchMember")) {										// 회원 검색
 
 			String name = request.getParameter("name");
 			String email = request.getParameter("email");
@@ -131,7 +137,7 @@ public class MemberServlet extends HttpServlet {
 
 			nextPage = "/views/listMembers.jsp";
 
-		} else if (action.equals("foreachSelect")) {	// 회원 정보 조회
+		} else if (action.equals("foreachSelect")) {									// 회원 정보 조회
 
 			List<String> nameList = new ArrayList<String>();
 			nameList.add("홍유진");
@@ -142,22 +148,24 @@ public class MemberServlet extends HttpServlet {
 
 			nextPage = "/views/listMembers.jsp";
 
-//		} else if (action.equals("foreachInsert")) {
-//
-//			List<MemberVO> memList = new ArrayList<MemberVO>();
-//			memList.add(new MemberVO("m1", "1234", "�ڱ浿", "m1@test.com"));
-//			memList.add(new MemberVO("m2", "1234", "�̱浿", "m2@test.com"));
-//			memList.add(new MemberVO("m3", "1234", "��浿", "m3@test.com"));
-//			int result = memberDao.foreachInsert(memList);
-//			nextPage = "/member?action=listMembers";
-//
-//		} else if (action.equals("selectLike")) {
-//
-//			String name = "�浿";
-//			List<MemberVO> membersList = memberDao.selectLike(name);
-//			request.setAttribute("membersList", membersList);
-//			nextPage = "/views/listMembers.jsp";
-//
+		} else if (action.equals("foreachInsert")) {									// 회원 다중 추가
+
+			List<MemberVO> memList = new ArrayList<MemberVO>();
+			memList.add(new MemberVO("m1", "1234", "박민영", "m1@test.com"));
+			memList.add(new MemberVO("m2", "1234", "이혜리", "m2@test.com"));
+			memList.add(new MemberVO("m3", "1234", "김서현", "m3@test.com"));
+			int result = memberDao.foreachInsert(memList);
+
+			nextPage = "/member?action=listMembers";
+
+		} else if (action.equals("selectLike")) {											// like 검색
+
+			String name = "유진";
+			List<MemberVO> membersList = memberDao.selectLike(name);
+			request.setAttribute("membersList", membersList);
+
+			nextPage = "/views/listMembers.jsp";
+
 		}
 
 		// 이름, 비밀번호 조회
