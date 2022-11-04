@@ -3,6 +3,7 @@ package com.spring.member;
 import java.io.Reader;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -36,6 +37,7 @@ public class MemberDAO {
 
 	}
 
+	// 회원 목록 | MemberVO
 	public List<MemberVO> selectAllMemberList() {
 
 		sqlMapper = getInstance();
@@ -46,6 +48,7 @@ public class MemberDAO {
 
 	}
 
+	// 회원 목록 | HashMap
 	public List<HashMap<String, String>> selectAllMemberList2() {
 
 		sqlMapper = getInstance();
@@ -99,5 +102,105 @@ public class MemberDAO {
 		return membersList;
 
 	}
+
+	// 회원 추가 | memberVO
+	public int insertMember(MemberVO memberVO) {
+
+		sqlMapper = getInstance();
+		SqlSession session = sqlMapper.openSession();
+		int result = session.insert("mapper.member.insertMember", memberVO);	// 지정한 id에 SQL문에 memberVO 값을 전달하여 회원 정보를 테이블에 추가
+		session.commit();	// 수동 커밋으로 반드시 commit()을 호출하여 영구 반영함
+
+		return result;
+
+	}
+
+	// 회원 추가 | HashMap
+	public int insertMember2(Map<String, String> memberMap) {
+
+		sqlMapper = getInstance();
+		SqlSession session = sqlMapper.openSession();
+		int result = session.insert("mapper.member.insertMember2", memberMap);
+		session.commit();
+
+		return result;
+
+	}
+//ㅊ
+//	public int updateMember(MemberVO memberVO) {
+//
+//		sqlMapper = getInstance();
+//		SqlSession session = sqlMapper.openSession();
+//		int result = session.update("mapper.member.updateMember", memberVO);
+//		session.commit();
+//		return result;
+//
+//	}
+//
+//	public int deleteMember(String id) {
+//
+//		sqlMapper = getInstance();
+//		SqlSession session = sqlMapper.openSession();
+//		int result = 0;
+//		result = session.delete("mapper.member.deleteMember", id);
+//		session.commit();
+//		return result;
+//
+//	}
+//
+//	public List<MemberVO> searchMember(MemberVO memberVO) {
+//
+//		sqlMapper = getInstance();
+//		SqlSession session = sqlMapper.openSession();
+//		List list = session.selectList("mapper.member.searchMember", memberVO);
+//		return list;
+//
+//	}
+//
+//	public List<MemberVO> foreachSelect(List nameList) {
+//
+//		sqlMapper = getInstance();
+//		SqlSession session = sqlMapper.openSession();
+//		List list = session.selectList("mapper.member.foreachSelect", nameList);
+//		return list;
+//
+//	}
+//
+//	public int foreachInsert(List memList) {
+//
+//		sqlMapper = getInstance();
+//		SqlSession session = sqlMapper.openSession();
+//		int result = session.insert("mapper.member.foreachInsert", memList);
+//		session.commit();
+//		return result;
+//
+//	}
+//
+//	public List<MemberVO> selectLike(String name) {
+//
+//		sqlMapper = getInstance();
+//		SqlSession session = sqlMapper.openSession();
+//		List list = session.selectList("mapper.member.selectLike", name);
+//		return list;
+//
+//	}
+//
+//	public String selectName() {
+//
+//		sqlMapper = getInstance();
+//		SqlSession session = sqlMapper.openSession();
+//		String name = session.selectOne("mapper.member.selectName");
+//		return name;
+//
+//	}
+//
+//	public int selectPwd() {
+//
+//		sqlMapper = getInstance();
+//		SqlSession session = sqlMapper.openSession();
+//		int pwd = session.selectOne("mapper.member.selectPwd");
+//		return pwd;
+//
+//	}
 
 }

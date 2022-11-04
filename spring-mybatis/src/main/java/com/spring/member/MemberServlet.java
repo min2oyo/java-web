@@ -1,7 +1,9 @@
 package com.spring.member;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -64,6 +66,90 @@ public class MemberServlet extends HttpServlet {
 
 			nextPage = "/views/listMembers.jsp";
 
+		} else if (action.equals("insertMember")) {						// 회원 추가 | memberVO
+
+			String id = request.getParameter("id");
+			String pwd = request.getParameter("pwd");
+			String name = request.getParameter("name");
+			String email = request.getParameter("email");
+			memberVO.setId(id);
+			memberVO.setPwd(pwd);
+			memberVO.setName(name);
+			memberVO.setEmail(email);
+			memberDao.insertMember(memberVO);
+
+			nextPage = "/member?action=listMembers";
+
+		} else if (action.equals("insertMember2")) {	// 회원 추가 | HashMap
+
+			String id = request.getParameter("id");
+			String pwd = request.getParameter("pwd");
+			String name = request.getParameter("name");
+			String email = request.getParameter("email");
+			Map<String, String> memberMap = new HashMap<String, String>();
+			memberMap.put("id", id);
+			memberMap.put("pwd", pwd);
+			memberMap.put("name", name);
+			memberMap.put("email", email);
+			memberDao.insertMember2(memberMap);
+
+			nextPage = "/member?action=listMembers";
+
+//		} else if (action.equals("updateMember")) {
+//
+//			String id = request.getParameter("id");
+//			String pwd = request.getParameter("pwd");
+//			String name = request.getParameter("name");
+//			String email = request.getParameter("email");
+//			memberVO.setId(id);
+//			memberVO.setPwd(pwd);
+//			memberVO.setName(name);
+//			memberVO.setEmail(email);
+//			memberDao.updateMember(memberVO);
+//			nextPage = "/mem4.do?action=listMembers";
+//
+//		} else if (action.equals("deleteMember")) {
+//
+//			String id = request.getParameter("id");
+//			memberDao.deleteMember(id);
+//			nextPage = "/mem4.do?action=listMembers";
+//
+//		} else if (action.equals("searchMember")) {
+//
+//			String name = request.getParameter("name");
+//			String email = request.getParameter("email");
+//			memberVO.setName(name);
+//			memberVO.setEmail(email);
+//			List<MemberVO> membersList = memberDao.searchMember(memberVO);
+//			request.setAttribute("membersList", membersList);
+//			nextPage = "test03/listMembers.jsp";
+//
+//		} else if (action.equals("foreachSelect")) {
+//
+//			List<String> nameList = new ArrayList<String>();
+//			nameList.add("ȫ�浿");
+//			nameList.add("������");
+//			nameList.add("�̼���");
+//			List<MemberVO> membersList = memberDao.foreachSelect(nameList);
+//			request.setAttribute("membersList", membersList);
+//			nextPage = "test03/listMembers.jsp";
+//
+//		} else if (action.equals("foreachInsert")) {
+//
+//			List<MemberVO> memList = new ArrayList<MemberVO>();
+//			memList.add(new MemberVO("m1", "1234", "�ڱ浿", "m1@test.com"));
+//			memList.add(new MemberVO("m2", "1234", "�̱浿", "m2@test.com"));
+//			memList.add(new MemberVO("m3", "1234", "��浿", "m3@test.com"));
+//			int result = memberDao.foreachInsert(memList);
+//			nextPage = "/mem4.do?action=listMembers";
+//
+//		} else if (action.equals("selectLike")) {
+//
+//			String name = "�浿";
+//			List<MemberVO> membersList = memberDao.selectLike(name);
+//			request.setAttribute("membersList", membersList);
+//			nextPage = "test03/listMembers.jsp";
+//
 		}
 
 		// 이름, 비밀번호 조회

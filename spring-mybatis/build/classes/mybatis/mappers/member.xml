@@ -71,19 +71,21 @@
 		]]>
 	</select>
 
-<!-- 	<insert id="insertMember" parameterType="memberVO"> -->
-<!-- 		<![CDATA[ -->
-<!-- 			insert into t_member (id, pwd, name, email) -->
-<!-- 			values (#{id}, #{pwd}, #{name}, #{email}) -->
-<!-- 		]]> -->
-<!-- 	</insert> -->
+	<!-- 회원 추가 | memberVO -->
+	<insert id="insertMember" parameterType="memberVO">
+		<![CDATA[
+			insert into t_member (id, pwd, name, email)
+			values (#{id}, #{pwd}, #{name}, #{email})
+		]]>
+	</insert>
 
-<!-- 	<insert id="insertMember2" parameterType="java.util.Map"> -->
-<!-- 		<![CDATA[ -->
-<!-- 			insert into t_member (id, pwd, name, email) -->
-<!-- 			values (#{id}, #{pwd}, #{name}, #{email}) -->
-<!-- 		]]> -->
-<!-- 	</insert> -->
+	<!-- 회원 추가 | HashMap -->
+	<insert id="insertMember2" parameterType="java.util.Map">
+		<![CDATA[
+			insert into t_member (id, pwd, name, email)
+			values (#{id}, #{pwd}, #{name}, #{email})
+		]]>
+	</insert>
 
 <!-- 	<update id="updateMember" parameterType="memberVO"> -->
 <!-- 		<![CDATA[ -->
