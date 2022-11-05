@@ -3,11 +3,13 @@ package com.spring.member.service;
 import java.util.List;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.member.dao.MemberDAO;
 import com.spring.member.vo.MemberVO;
 
-/* @Transactional(propagation=Propagation.REQUIRED) */
+@Transactional(propagation = Propagation.REQUIRED)
 public class MemberServiceImpl implements MemberService {
 
 	private MemberDAO memberDAO;
